@@ -1,3 +1,7 @@
+baseURL: "https://httin.github.io/"
 theme: jekyll-theme-minimal
 title: Tin Huynh Homepage
 description: Bookmark this to keep an eye on my project updates!
+languageCode: "en"
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: true
