@@ -14,7 +14,7 @@
 
 - 💬 Ask me about **Kubernetes, CI/CD**
 
-- 📫 How to reach me **huynhtrungtin1902@gmail.com**
+- 📫 Reach me at **huynhtrungtin1902@gmail.com**
 
 - 📄 Know about my experiences [https://www.linkedin.com/in/huynhtrungtin/](https://www.linkedin.com/in/huynhtrungtin/)
 
