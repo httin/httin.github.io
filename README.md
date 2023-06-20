@@ -12,13 +12,10 @@
 
 - 💬 Ask me about **Kubernetes**
 
-- 📫 Reach me at [huynhtrungtin1902@gmail.com](mailto:huynhtrungtin1902@gmail.com)
-
-- 📄 Know about my experiences [https://www.linkedin.com/in/huynhtrungtin/](https://www.linkedin.com/in/huynhtrungtin/)
+- 📫 Reach me at <a href="https://linkedin.com/in/huynhtrungtin" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="huynhtrungtin" height="20" width="20" /></a>
 
 <h3 align="left">My links:</h3>
 <p align="left">
-<a href="https://linkedin.com/in/huynhtrungtin" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="huynhtrungtin" height="30" width="40" /></a>
 <a href="https://codeforces.com/profile/tinht19" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/codeforces.svg" alt="tinht19" height="30" width="40" /></a>
 <a href="https://www.leetcode.com/httin" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="httin" height="30" width="40" /></a>
 </p>
