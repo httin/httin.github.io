@@ -10,11 +10,11 @@
 
 - 👨‍💻 All of my projects are available at [https://httin.github.io/projects](https://httin.github.io/projects)
 
-- 📝 I regularly write articles on [https://httin.github.io/blog](https://httin.github.io/blog)
+- 📝 I regularly write articles on [https://httin.github.io/blog](https://httin.github.io/blogs/)
 
-- 💬 Ask me about **Kubernetes, CI/CD**
+- 💬 Ask me about **Kubernetes**
 
-- 📫 Reach me at **huynhtrungtin1902@gmail.com**
+- 📫 Reach me at [huynhtrungtin1902@gmail.com](mailto:huynhtrungtin1902@gmail.com)
 
 - 📄 Know about my experiences [https://www.linkedin.com/in/huynhtrungtin/](https://www.linkedin.com/in/huynhtrungtin/)
 
