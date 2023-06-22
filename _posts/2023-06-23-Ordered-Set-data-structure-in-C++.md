@@ -2,10 +2,11 @@
 layout: post
 title: "Ordered Set data structure in C++"
 description: "An advanced data structure in GNU C++ PBDS library"
-date: 2023-06-23
+date: 2023-06-22
 feature_image: images/road.jpg
 tags: [GNU, datastructures]
 ---
+
 Ordered Set là một cấu trúc dữ liệu policy-based của thư viện GNU C++. Giống như **std::set**, implementation của nó vẫn dựa trên Red Black Tree, mọi phần tử trong nó có tính thứ tự và nó cũng làm được tất cả những gì mà **std::set** làm được trong độ phức tạp thời gian *O(logN)*. Tuy nhiên, Orderer Set cung cấp thêm hai phương thức trong thời gian *O(logN)*
 - **order_of_key (k)**: tính số phần tử nhỏ hơn **k**.
 - **find_by_order(k)**: tìm phần tử thứ **k** trong tập hợp.
