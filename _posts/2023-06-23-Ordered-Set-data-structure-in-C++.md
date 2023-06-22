@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cấu trúc dữ liệu Ordered Set"
+title: "Ordered Set data structure in C++"
 description: "Một cấu trúc dữ liệu mở rộng của thư viện GNU C++ PBDS"
 date: 2023-06-23
 feature_image: images/ordered_set.png
