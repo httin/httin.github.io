@@ -1,15 +1,30 @@
 ---
 layout: post
-title: "Graphic Designer On The Road"
-description: "A graphic designer is a professional within the graphic design and graphic arts industry."
-date: 2022-01-05
-feature_image: images/road.jpg
-tags: [tips, work]
+title: "Cấu trúc dữ liệu Ordered Set"
+description: "Một cấu trúc dữ liệu mở rộng của thư viện GNU C++ PBDS"
+date: 2023-06-23
+feature_image: images/ordered_set.png
+tags: [GNU, datastructures]
 ---
 
-A graphic designer is a professional within the graphic design and graphic arts industry who assembles together images, typography, or motion graphics to create a piece of design. A graphic designer creates the graphics primarily for published, printed or electronic media, such as brochures (sometimes) and advertising. They are also sometimes responsible for typesetting, illustration, user interfaces, web design, or take a teaching position. A core responsibility of the designer's job is to present information in a way that is both accessible and memorable.
+Ordered Set là một cấu trúc dữ liệu policy-based của thư viện GNU C++. Giống như **std::set**, implementation của nó vẫn dựa trên Red Black Tree, mọi phần tử trong nó có tính thứ tự và nó cũng làm được tất cả những gì mà **std::set** làm được trong độ phức tạp thời gian *O(logN)*. Tuy nhiên, Orderer Set cung cấp thêm hai phương thức trong thời gian *O(logN)*
+- **order_of_key (k)**: tính số phần tử nhỏ hơn **k**.
+- **find_by_order(k)**: tìm phần tử thứ **k** trong tập hợp.
 
 <!--more-->
+
+Để sử dụng cấu trúc dữ liệu này, chúng ta cần xây dựng nó từ thư viện PBDS (policy-based data structures) 
+
+```cpp
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace std;
+using namespace __gnu_pbds;
+
+template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+```
 
 A degree or certificate from an accredited trade school is usually considered essential for a graphic design position. After a career history has been established, though, the graphic designer's experience and number of years in the business are considered the primary qualifications. A portfolio, which is the primary method for demonstrating these qualifications, is usually required to be shown at job interviews, and is constantly developed throughout a designer's career. [[Source](https://en.wikipedia.org/wiki/Graphic_designer)]
 
