@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Ordered Set data structure in C++"
+title: "Ordered Set data structure in GNU C++"
 description: "An advanced data structure in GNU C++ PBDS library"
-date: 2023-06-22
-feature_image: images/road.jpg
+date: 2023-06-23
+feature_image: images/cpp-girl.jpg
 tags: [GNU, datastructures]
 ---
 
@@ -25,10 +25,6 @@ using namespace __gnu_pbds;
 
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 ```
-
-A degree or certificate from an accredited trade school is usually considered essential for a graphic design position. After a career history has been established, though, the graphic designer's experience and number of years in the business are considered the primary qualifications. A portfolio, which is the primary method for demonstrating these qualifications, is usually required to be shown at job interviews, and is constantly developed throughout a designer's career. [[Source](https://en.wikipedia.org/wiki/Graphic_designer)]
-
-Ice molecules can exhibit up to sixteen different phases _(packing geometries)_ that depend on temperature and pressure. When water is cooled rapidly (quenching), up to three different types of amorphous ice can form depending on the history of its pressure and temperature. When cooled slowly correlated proton tunneling occurs below 20 K giving rise to macroscopic quantum phenomena. Virtually all the ice on Earth's surface and in its atmosphere is of a hexagonal crystalline structure denoted as ice Ih (spoken as "ice one h") with minute traces of cubic ice denoted as ice Ic. The most common phase transition to ice Ih occurs when liquid water is cooled below 0°C (273.15K, 32°F) at standard atmospheric pressure. It may also be deposited directly by water vapor, as happens in the formation of frost. The transition from ice to water is melting and from ice directly to water vapor is sublimation.
 
 ## Characteristics
 
