@@ -16,7 +16,7 @@ Ordered Set là một cấu trúc dữ liệu policy-based của thư viện GNU
 
 Để sử dụng cấu trúc dữ liệu này, chúng ta cần xây dựng nó từ thư viện PBDS (policy-based data structures) 
 
-{% highlight cpp %}
+{% highlight ruby %}
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
