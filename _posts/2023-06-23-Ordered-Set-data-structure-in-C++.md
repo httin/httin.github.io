@@ -100,7 +100,6 @@ Nếu chúng ta dùng một **Mapped** type ở tham số thứ hai, ta sẽ có
 
 ## Problems
 1. [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/description/)
-> Given an integer array `nums`, return an integer array `counts` where `counts[i]` is the number of smaller elements to the right of `nums[i]`.
 2. Sliding Median
 > You are given an array of `n` integers. Your task is to calculate the median of each window of `k` elements, from left to right. The median is the middle element when the elements are sorted. If the number of elements is even, there are two possible medians and we assume that the median is the smaller of them.
 
