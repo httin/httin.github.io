@@ -16,7 +16,7 @@ Ordered Set là một cấu trúc dữ liệu policy-based của thư viện GNU
 
 Để sử dụng cấu trúc dữ liệu này, chúng ta cần xây dựng nó từ thư viện PBDS (policy-based data structures) 
 
-```cpp
+{% highlight cpp %}
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
@@ -25,9 +25,9 @@ using namespace std;
 using namespace __gnu_pbds;
 
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-```
+{% endhighlight %}
 
-Ngoài ra, ta có thể sử dụng `#include <ext/pb_ds/detail/standard_policies.hpp>`{:.cpp} thay cho việc include hai thư viện `<ext/pb_ds/assoc_container.hpp>` và `<ext/pb_ds/tree_policy.hpp>` ví chúng đã có trong `<ext/pb_ds/detail/standard_policies.hpp>`
+Ngoài ra, ta có thể sử dụng `#include <ext/pb_ds/detail/standard_policies.hpp>`{:.cpp} thay cho việc include hai thư viện `<ext/pb_ds/assoc_container.hpp>` và `<ext/pb_ds/tree_policy.hpp>` vì chúng đã có trong `<ext/pb_ds/detail/standard_policies.hpp>`
 
 ## Deep Dive
 Trong đó, cấu trúc tree-based được định nghĩa như sau
