@@ -27,9 +27,9 @@ using namespace __gnu_pbds;
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 {% endhighlight %}
 
-Ngoài ra, ta có thể sử dụng `#include <ext/pb_ds/detail/standard_policies.hpp>`{:.cpp} thay cho việc include hai thư viện `<ext/pb_ds/assoc_container.hpp>` và `<ext/pb_ds/tree_policy.hpp>` vì chúng đã có trong `<ext/pb_ds/detail/standard_policies.hpp>`
+Ngoài ra, ta có thể sử dụng `#include <ext/pb_ds/detail/standard_policies.hpp>`{:.cpp} thay cho việc include hai thư viện `<ext/pb_ds/assoc_container.hpp>` và `<ext/pb_ds/tree_policy.hpp>` vì chúng đã có trong `<ext/pb_ds/detail/standard_policies.hpp>`.
 
-Ví dụ
+Ví dụ,
 ```cpp
 ordered_set T;
 T.insert(1);
@@ -49,6 +49,8 @@ cout<<T.order_of_key(3)<<endl;   // 2
 cout<<T.order_of_key(4)<<endl;   // 2
 cout<<T.order_of_key(400)<<endl; // 5
 ```
+
+Một ví dụ khác ở https://opensource.apple.com/source/llvmgcc42/llvmgcc42-2336.9/libstdc++-v3/testsuite/ext/pb_ds/example/tree_order_statistics.cc
 
 ## Deep Dive
 Trong đó, cấu trúc tree-based được định nghĩa như sau
@@ -86,7 +88,7 @@ Trong template này, nếu chúng ta khởi tạo **tree** với hai tham số �
 
 <code class="codeforces" style="color:#800; font-family:Consolas;">Tag</code> -- định nghĩa cấu trúc cây. STL cung cấp 3 base classes là `rb_tree_tag` (Red Black Tree), `splay_tree_tag` (Splay Tree) and `ov_tree_tag` (ordered-vector tree). Trong competitive programming, chúng ta thường sử dụng Red Black Tree vì Splay Tree và OV Tree sử dụng các operations trong thời gian tuyến tính.
 
-<code class="codeforces">Node_Update</code> -- định nghĩa update policy cho các nodes trong cây. Mặc định, gái trị mặc định của nó là `null_node_update`, nó sẽ không lưu thêm thông tin vào các đỉnh. Còn `tree_order_statistics_node_update` là một node update policy có trong thư viện `<ext/pb_ds/tree_policy.hpp>` của **C++**, sẽ lưu thêm các thông tin cần thiết vào các đỉnh.
+<code class="codeforces" style="color:#800; font-family:Consolas;">Node_Update</code> -- định nghĩa update policy cho các nodes trong cây. Mặc định, gái trị mặc định của nó là `null_node_update`, nó sẽ không lưu thêm thông tin vào các đỉnh. Còn `tree_order_statistics_node_update` là một node update policy có trong thư viện `<ext/pb_ds/tree_policy.hpp>` của **C++**, sẽ lưu thêm thông tin cần thiết vào các đỉnh, vì vậy làm giảm performance của nó đi một ít.
 
 Cuối cùng, chúng ta có một cách cài đặt khá tốt cho cấu trúc cây của **C++**
 
@@ -94,12 +96,29 @@ Cuối cùng, chúng ta có một cách cài đặt khá tốt cho cấu trúc c
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 {% endhighlight %}
 
+Nếu chúng ta dùng một **Mapped** type ở tham số thứ hai, ta sẽ có CTDL **Ordered Map**!
 
-## Characteristics
+## Problems
+1. [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/description/)
+> Given an integer array `nums`, return an integer array `counts` where `counts[i]` is the number of smaller elements to the right of `nums[i]`.
+2. Sliding Median
+> You are given an array of `n` integers. Your task is to calculate the median of each window of `k` elements, from left to right. The median is the middle element when the elements are sorted. If the number of elements is even, there are two possible medians and we assume that the median is the smaller of them.
 
-As a naturally-occurring crystalline inorganic solid with an ordered structure, ice is considered a mineral.[citation needed] It possesses a regular crystalline structure based on the molecule of water, which consists of a single oxygen atom covalently bonded to two hydrogen atoms, or H-O-H. However, many of the physical properties of water and ice are controlled by the formation of hydrogen bonds between adjacent oxygen and hydrogen atoms; while it is a weak bond, it is nonetheless critical in controlling the structure of both water and ice.
+> **Input**
+> The first input line contains two integers `n` and `k`: the number of elements and the size of the window.
+> Then there are `n` integers x_1,x_2,…,x_n: the contents of the array.
 
-> “ice contains no future , just the past, sealed away. As if they're alive, everything in the world is sealed up inside, clear and distinct. Ice can preserve all kinds of things that way- cleanly, clearly. That's the essence of ice, the role it plays.”
-> <cite>― Haruki Murakami</cite>
+> **Output**
+> Print `n−k+1` values: the medians.
 
-An unusual property of ice frozen at atmospheric pressure is that the solid is approximately 8.3% less dense than liquid water. The density of ice is 0.9167 g/cm3 at 0 °C,[4] whereas water has a density of 0.9998 g/cm³ at the same temperature. Liquid water is densest, essentially 1.00 g/cm³, at 4 °C and becomes less dense as the water molecules begin to form the hexagonal crystals[5] of ice as the freezing point is reached. This is due to hydrogen bonding dominating the intermolecular forces, which results in a packing of molecules less compact in the solid. Density of ice increases slightly with decreasing temperature and has a value of 0.9340 g/cm³ at −180 °C (93 K).[6]
+> **Constraints**
+> 1\le k\le n \le 2*10^5
+> 1\le x_i\le 109
+
+> **Example**
+> Input:
+> 8 3
+> 2 4 3 5 8 1 2 1
+> Output:
+> 3 4 5 5 2 1
+
