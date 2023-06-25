@@ -48,6 +48,23 @@ footer:
   content: "&copy; all rights reserved."
   has_social: true
 
+# Params
+params:
+  customCSS:
+    - href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css'
+      integrity: sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei
+      crossorigin: anonymous
+    - href: css/main.css
+  customJS:
+    - src: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js'
+      integrity: sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq
+      crossorigin: anonymous
+    - src: >-
+        https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js
+      integrity: sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc
+      crossorigin: anonymous
+    - src: js/main.js
+
 # Plugins
 plugins:
   - jekyll-paginate
