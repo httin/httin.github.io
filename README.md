@@ -8,7 +8,7 @@
 
 - 👨‍💻 All of my projects are available at [https://httin.github.io/projects](https://httin.github.io/projects)
 
-- 📝 I regularly write articles on [https://httin.github.io/blogs/](https://httin.github.io/blogs/)
+- 📝 I regularly write articles on [https://httin.github.io/blogs/](https://httin.github.io/blogs)
 
 - 💬 Ask me about **Kubernetes**
 
