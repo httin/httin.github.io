@@ -45,7 +45,7 @@ accent_color: '#2d72d9'
 
 # Site footer
 footer:
-  content: "&copy; all rights reserved."
+  content: "&copy; **[Tin Huynh](https://github.com/httin)** all rights reserved."
   has_social: true
 
 # Plugins
