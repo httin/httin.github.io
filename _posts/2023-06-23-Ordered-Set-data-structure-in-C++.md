@@ -106,20 +106,28 @@ Nếu chúng ta dùng một **Mapped** type ở tham số thứ hai, ta sẽ có
 
 **Input**
 The first input line contains two integers `n` and `k`: the number of elements and the size of the window.
-Then there are `n` integers x_1,x_2,…,x_n: the contents of the array.
+Then there are `n` integers {% katex %}x_1,x_2,…,x_n{% endkatex %}: the contents of the array.
 
 **Output**
 Print `n−k+1` values: the medians.
 
 **Constraints**
-{% katexmm %}
-1\le k\le n \le 2*10^5
+
+{% katex %}
+1 \le k \le n \le 2*10^5
+{% endkatex %}
+
+{% katex %}
 1\le x_i\le 109
-{% endkatexmm %}
+{% endkatex %}
 
 **Example**
 Input:
+```
 8 3
 2 4 3 5 8 1 2 1
+```
 Output:
+```
 3 4 5 5 2 1
+```
