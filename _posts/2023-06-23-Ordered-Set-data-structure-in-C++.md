@@ -105,7 +105,6 @@ Nếu chúng ta dùng một **Mapped** type ở tham số thứ hai, ta sẽ có
 > You are given an array of `n` integers. Your task is to calculate the median of each window of `k` elements, from left to right. The median is the middle element when the elements are sorted. If the number of elements is even, there are two possible medians and we assume that the median is the smaller of them.
 
 **Input**
-{% katex %}
 The first input line contains two integers `n` and `k`: the number of elements and the size of the window.
 Then there are `n` integers x_1,x_2,…,x_n: the contents of the array.
 
@@ -113,8 +112,10 @@ Then there are `n` integers x_1,x_2,…,x_n: the contents of the array.
 Print `n−k+1` values: the medians.
 
 **Constraints**
+{% katexmm %}
 1\le k\le n \le 2*10^5
 1\le x_i\le 109
+{% endkatexmm %}
 
 **Example**
 Input:
@@ -122,4 +123,3 @@ Input:
 2 4 3 5 8 1 2 1
 Output:
 3 4 5 5 2 1
-{% endkatex %}
