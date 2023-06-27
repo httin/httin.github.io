@@ -112,12 +112,10 @@ Then there are `n` integers x_1,x_2,…,x_n: the contents of the array.
 Print `n−k+1` values: the medians.
 
 **Constraints**
-{% raw %}
 {% katexmm %}
 1\le k\le n \le 2*10^5
 1\le x_i\le 109
 {% endkatexmm %}
-{% endraw %}
 
 **Example**
 Input:
