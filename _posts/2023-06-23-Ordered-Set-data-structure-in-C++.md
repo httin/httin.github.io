@@ -4,6 +4,7 @@ title: "Ordered Set data structure in GNU C++"
 description: "An advanced data structure in GNU C++ PBDS library"
 date: 2023-06-23
 feature_image: images/cpp-binary.jpg
+katex: 1
 tags: [GNU, datastructures]
 ---
 
