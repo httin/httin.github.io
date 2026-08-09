@@ -9,14 +9,14 @@ categories: ["Data Structures and Algorithms"]
 tags: [GNU, datastructures]
 ---
 
-Ordered Set là một cấu trúc dữ liệu policy-based của thư viện GNU C++. Giống như **std::set**, implementation của nó vẫn dựa trên Red Black Tree, mọi phần tử trong nó có tính thứ tự và nó cũng làm được tất cả những gì mà **std::set** làm được trong độ phức tạp thời gian *O(logN)*. Tuy nhiên, trong một số trường hợp chúng ta muốn biết thứ tự của một phần tử hoặc là tìm phần tử khi biết trước thứ tự của nó trong tập hợp, Ordered Set cung cấp thêm hai phương thức trong thời gian *O(logN)*
-- **find_by_order(k)**: tìm phần tử lớn thứ **k** trong tập hợp (tính từ **0**).
-- **order_of_key(k)**: số phần tử nhỏ hơn **k**.
+Ordered Set is a policy-based data structure from the GNU C++ library. Like **std::set**, its implementation is based on a Red-Black Tree: every element keeps a strict order, and it can do everything **std::set** can do, in *O(logN)* time complexity. However, sometimes we want to know the rank of an element, or find an element by its rank in the set. Ordered Set provides two extra methods for this, also in *O(logN)* time:
+- **find_by_order(k)**: finds the element with the **k**-th largest rank in the set (0-indexed).
+- **order_of_key(k)**: returns the number of elements smaller than **k**.
 
 
 <!--more-->
 ## Introduction
-Để sử dụng cấu trúc dữ liệu này, chúng ta cần xây dựng nó từ thư viện PBDS (policy-based data structures) 
+To use this data structure, we need to build it from the PBDS (policy-based data structures) library
 
 {% highlight cpp %}
 #include <bits/stdc++.h>
@@ -29,9 +29,9 @@ using namespace __gnu_pbds;
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 {% endhighlight %}
 
-Ngoài ra, ta có thể sử dụng `#include <ext/pb_ds/detail/standard_policies.hpp>`{:.cpp} thay cho việc include hai thư viện `<ext/pb_ds/assoc_container.hpp>` và `<ext/pb_ds/tree_policy.hpp>` vì chúng đã có trong `<ext/pb_ds/detail/standard_policies.hpp>`.
+Alternatively, you can use `#include <ext/pb_ds/detail/standard_policies.hpp>`{:.cpp} instead of including the two headers `<ext/pb_ds/assoc_container.hpp>` and `<ext/pb_ds/tree_policy.hpp>` separately, since they are already included inside `<ext/pb_ds/detail/standard_policies.hpp>`.
 
-Ví dụ,
+For example,
 ```cpp
 ordered_set T;
 T.insert(1);
@@ -52,10 +52,10 @@ cout<<T.order_of_key(4)<<endl;   // 2
 cout<<T.order_of_key(400)<<endl; // 5
 ```
 
-Một ví dụ khác ở https://opensource.apple.com/source/llvmgcc42/llvmgcc42-2336.9/libstdc++-v3/testsuite/ext/pb_ds/example/tree_order_statistics.cc
+Another example is available at https://opensource.apple.com/source/llvmgcc42/llvmgcc42-2336.9/libstdc++-v3/testsuite/ext/pb_ds/example/tree_order_statistics.cc
 
 ## Deep Dive
-Trong đó, cấu trúc tree-based được định nghĩa như sau
+In it, the tree-based container is defined as follows
 ```cpp
   /**
    *  A tree-based container.
@@ -86,19 +86,19 @@ Trong đó, cấu trúc tree-based được định nghĩa như sau
   ...
 ```
 
-Trong template này, nếu chúng ta khởi tạo **tree** với hai tham số đầu, ta sẽ có **std::map**, nếu set *Mapped* là *null_type*, ta có **std::set**. Hiểu thêm về các typename khác
+In this template, if we instantiate **tree** with only the first two parameters, we get **std::map**. If we set *Mapped* to *null_type*, we get **std::set**. Here is a closer look at the other type parameters.
 
-<code class="codeforces" style="color:#800; font-family:Consolas;">Tag</code> -- định nghĩa cấu trúc cây. STL cung cấp 3 base classes là `rb_tree_tag` (Red Black Tree), `splay_tree_tag` (Splay Tree) and `ov_tree_tag` (ordered-vector tree). Trong competitive programming, chúng ta thường sử dụng Red Black Tree vì Splay Tree và OV Tree sử dụng các operations trong thời gian tuyến tính.
+<code class="codeforces" style="color:#800; font-family:Consolas;">Tag</code> -- defines the tree structure. The STL provides 3 base classes: `rb_tree_tag` (Red Black Tree), `splay_tree_tag` (Splay Tree) and `ov_tree_tag` (ordered-vector tree). In competitive programming, we usually use the Red Black Tree, because the Splay Tree and OV Tree have operations that run in linear time.
 
-<code class="codeforces" style="color:#800; font-family:Consolas;">Node_Update</code> -- định nghĩa update policy cho các nodes trong cây. Mặc định, gái trị mặc định của nó là `null_node_update`, nó sẽ không lưu thêm thông tin vào các đỉnh. Còn `tree_order_statistics_node_update` là một node update policy có trong thư viện `<ext/pb_ds/tree_policy.hpp>` của **C++**, sẽ lưu thêm thông tin cần thiết vào các đỉnh, vì vậy làm giảm performance của nó đi một ít.
+<code class="codeforces" style="color:#800; font-family:Consolas;">Node_Update</code> -- defines the update policy for the nodes in the tree. By default, its value is `null_node_update`, which does not store any extra information in the nodes. `tree_order_statistics_node_update`, on the other hand, is a node update policy from the **C++** `<ext/pb_ds/tree_policy.hpp>` header. It stores the extra information the tree needs in each node, which costs a small amount of performance.
 
-Cuối cùng, chúng ta có một cách cài đặt khá tốt cho cấu trúc cây của **C++**
+Finally, here is a good way to declare this tree structure in **C++**
 
 {% highlight cpp %}
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 {% endhighlight %}
 
-Nếu chúng ta dùng một **Mapped** type ở tham số thứ hai, ta sẽ có CTDL **Ordered Map**!
+If we use a **Mapped** type as the second parameter, we get the **Ordered Map** data structure!
 
 ## Problems
 1. [Count of Smaller Numbers After Self](https://leetcode.com/problems/count-of-smaller-numbers-after-self/description/)
