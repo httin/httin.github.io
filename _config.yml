@@ -37,12 +37,6 @@ navigation:
   - text: Tags
     url: /tags/
 
-# The shortname for your Disqus site to enable comments.
-disqus: justgoodthemes
-
-# Colors
-accent_color: '#2d72d9'
-
 # Site footer
 footer:
   content: "&copy; **[Tin Huynh](https://github.com/httin)** all rights reserved."
@@ -50,12 +44,7 @@ footer:
 
 # Plugins
 plugins:
-  - jekyll-paginate
   - jekyll-katex
-
-# http://jekyllrb.com/docs/pagination/
-paginate: 3
-paginate_path: '/page:num/'
 
 # Permalinks
 permalink: /:title

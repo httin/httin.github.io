@@ -2,25 +2,39 @@
 layout: default
 ---
 
-<main class="main-content fadeInDown delay_075s">
+<main class="main-content prose">
 
-  {% for post in paginator.posts %}
-  {% include post-card.html %}
-  {% endfor %}
+  <div class="hub-intro">
+    <p>Backend and infrastructure engineer in Ho Chi Minh City. I work on Kubernetes, Go and distributed systems.</p>
+    <p>I also like the math hiding underneath all of it, and I write about the data structures and algorithms I run into.</p>
+  </div>
 
-  {% if paginator.total_pages > 1 %}
-  <nav class="pagination">
-    <h2 class="screen-reader-text">Posts navigation</h2>
-    <div class="nav-links">
-      {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | relative_url }}" class="newer-posts">&larr; Newer Posts</a>
-      {% endif %}
-      <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-      {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | relative_url }}" class="older-posts">Older Posts &rarr;</a>
-      {% endif %}
-    </div>
-  </nav><!-- .pagination -->
-  {% endif %}
+  <h2 class="hub-label">Writing</h2>
+  {%- assign recent = site.posts | slice: 0, 5 -%}
+  {%- assign empty_blurb = "" -%}
+  {%- for cat in site.data.categories -%}
+    {%- assign group = recent | where_exp: "p", "p.categories contains cat.name" -%}
+    {%- if group.size > 0 -%}
+      {% include category-group.html name=cat.name blurb=empty_blurb posts=group %}
+    {%- endif -%}
+  {%- endfor -%}
+  <p class="hub-more"><a href="{{ '/blogs/' | relative_url }}">All writing &rarr;</a></p>
 
-</main><!-- .site-main -->
+  <h2 class="hub-label">Projects</h2>
+  <ul class="entry-list">
+    {%- for project in site.data.projects %}
+    <li class="entry">
+      <a class="entry-title" href="{{ project.url }}">{{ project.name }}</a>
+      <p class="entry-desc">{{ project.description }}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+
+  <h2 class="hub-label">Elsewhere</h2>
+  <p class="hub-elsewhere">
+    {%- for link in site.data.social.links %}
+    <a href="{{ link.url }}">{{ link.title | downcase }}</a>{% unless forloop.last %} <span>/</span> {% endunless %}
+    {%- endfor %}
+  </p>
+
+</main>

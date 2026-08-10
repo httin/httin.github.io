@@ -3,11 +3,32 @@
    https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+json+yaml
    ========================================================================== */
 
+:root {
+  --code-comment:  #8a7b6c;
+  --code-keyword:  #a8632c;
+  --code-string:   #6a7f3a;
+  --code-number:   #9a5b8a;
+  --code-function: #4a6f8a;
+  --code-punct:    #7d7064;
+  --code-plain:    var(--text);
+}
+
+@supports (color: light-dark(#000, #fff)) {
+  :root {
+    --code-comment:  light-dark(#8a7b6c, #7a6d60);
+    --code-keyword:  light-dark(#a8632c, #e0a05c);
+    --code-string:   light-dark(#6a7f3a, #a8bf72);
+    --code-number:   light-dark(#9a5b8a, #d093c0);
+    --code-function: light-dark(#4a6f8a, #8fb6d4);
+    --code-punct:    light-dark(#7d7064, #9c8d7d);
+  }
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
-  color: _palette(secondary);
+  color: var(--code-plain);
   background: none;
-  font-family: Consolas, "Andale Mono", "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 0.88889rem;
   text-align: left;
   white-space: pre;
@@ -42,13 +63,12 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: _palette(bg);
+  background: var(--surface);
 }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
   padding: .1em;
-  border-radius: .3em;
   white-space: normal;
 }
 
@@ -56,11 +76,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: slategray;
+  color: var(--code-comment);
 }
 
 .token.punctuation {
-  color: #999;
+  color: var(--code-punct);
 }
 
 .namespace {
@@ -74,7 +94,7 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #905;
+  color: var(--code-number);
 }
 
 .token.selector,
@@ -83,7 +103,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #690;
+  color: var(--code-string);
 }
 
 .token.operator,
@@ -91,25 +111,25 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #9a6e3a;
+  color: var(--code-punct);
   background: hsla(0, 0%, 100%, .5);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #07a;
+  color: var(--code-keyword);
 }
 
 .token.function,
 .token.class-name {
-  color: #dd4a68;
+  color: var(--code-function);
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-  color: #e90;
+  color: var(--code-number);
 }
 
 .token.important,
@@ -123,4 +143,3 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help;
 }
- 

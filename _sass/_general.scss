@@ -2,101 +2,23 @@
    2. General
    ========================================================================== */
 
-html,
-button,
-input,
-select,
-textarea {
-  font-family: _font(primary);
-}
-
 html {
-  border: 15px solid _palette(accent);
   box-sizing: border-box;
 
   @media only screen and (max-width: 600px) {
-    border-width: 5px;
     font-size: 100%;
   }
 }
 
-body {
-  color: _palette(primary);
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.66667;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
 a {
-  color: _palette(accent);
+  color: var(--accent);
   text-decoration: none;
   -webkit-transition: color .3s ease;
   transition: color .3s ease;
   &:hover {
-    color: _palette(secondary);
+    color: var(--text-strong);
     text-decoration: underline;
   }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: _palette(secondary);
-  font-family: _font(secondary);
-  font-weight: bold;
-  line-height: 1.2;
-  margin: 2rem 0 1rem;
-  text-rendering: optimizeLegibility;
-  &:first-child {
-    margin-top: 0;
-  }
-}
-
-h1 {
-  font-size: 2rem;
-  line-height: 1.11111;
-  letter-spacing: -1px;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 1.875rem;
-    letter-spacing: normal;
-    line-height: 1.2;
-  }
-}
-
-h2 {
-  font-size: 1.66667rem;
-  letter-spacing: -1px;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 1.5rem;
-    letter-spacing: normal;
-  }
-}
-
-h3 {
-  font-size: 1.33333rem;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 1.25em;
-  }
-}
-
-h4 {
-  font-size: 1.11111rem;
-}
-
-h5 {
-  font-size: 1rem;
-}
-
-h6 {
-  font-size: 0.88889rem;
 }
 
 p {
@@ -120,10 +42,10 @@ ins {
 }
 
 pre {
-  background: _palette(bg);
-  border: 1px solid _palette(border);
-  border-radius: 3px;
-  font-family: Consolas, "Andale Mono", "Courier New", Courier, monospace;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font-family: var(--font-mono);
   font-size: 0.88889rem;
   margin: 0 0 1.875em;
   overflow: auto;
@@ -132,18 +54,18 @@ pre {
 }
 
 :not(pre) > code {
-  background: _palette(bg);
-  border: 1px solid _palette(border);
-  border-radius: 3px;
-  font-family: Consolas, "Andale Mono", "Courier New", Courier, monospace;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font-family: var(--font-mono);
   font-size: 0.88889rem;
   padding: 1px 3px;
   white-space: pre;
 }
 
 blockquote {
-  border-left: 3px solid _palette(secondary);
-  color: _palette(secondary);
+  border-left: 3px solid var(--text-strong);
+  color: var(--text-strong);
   font-family: _font(secondary);
   font-style: italic;
   margin: 0 0 1.66667em -30px;
@@ -160,7 +82,7 @@ blockquote {
 
   small,
   cite {
-    color: _palette(primary);
+    color: var(--text);
     display: inline-block;
     font-size: 0.88889em;
   }
@@ -190,14 +112,14 @@ li > ol {
 }
 
 hr {
-  background: _palette(border);
+  background: var(--rule);
   border: 0;
   height: 1px;
   margin: 2.5em 0;
 }
 
 table {
-  border-bottom: 1px solid _palette(border);
+  border-bottom: 1px solid var(--rule);
   line-height: 1.33333;
   margin: 0 0 1.66667em;
   text-align: left;
@@ -212,21 +134,21 @@ caption {
 
 th,
 td {
-  border-top: 1px solid _palette(border);
+  border-top: 1px solid var(--rule);
   padding: 8px;
 }
 
 th {
-   color: _palette(secondary);
+   color: var(--text-strong);
    font-weight: bold;
 }
 
 table tbody > tr:nth-child(odd) {
-  background: _palette(bg);
+  background: var(--surface);
 }
 
 img {
-  border-radius: 3px;
+  border-radius: 0;
   height: auto;
   max-width: 100%;
 }
@@ -244,28 +166,10 @@ video {
 }
 
 .image-card figcaption {
-  color: _palette(meta);
+  color: var(--text-muted);
   font-size: 0.77778rem;
   padding-top: 0.5em;
   text-align: left;
-}
-
-@media only screen and (min-width: 851px) {
-  .width-full img,
-  .width-wide img {
-    margin-left: calc(425px - 50vw);
-    margin-right: calc(425px - 50vw);
-    max-width: none;
-    width: calc(100vw - 90px);
-  }
-}
-
-@media only screen and (min-width: 971px) {
-  .width-wide img {
-    margin-left: -60px;
-    margin-right: -60px;
-    width: 880px;
-  }
 }
 
 /* Clearing floats */
@@ -297,13 +201,13 @@ video {
 /* Text selection */
 ::-moz-selection {
   background: #e4edfa;
-  color: _palette(secondary);
+  color: var(--text-strong);
   text-shadow: none;
 }
 
 ::selection {
   background: #e4edfa;
-  color: _palette(secondary);
+  color: var(--text-strong);
   text-shadow: none;
 }
 
@@ -312,10 +216,10 @@ video {
 #menu-close,
 .back-to-top {
 	background: 0;
-  border: 1px solid _palette(border);
-  border-radius: 3px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
   box-sizing: border-box;
-	color: _palette(primary);
+	color: var(--text);
 	padding: 0;
 	position: relative;
 	height: 36px;
@@ -326,8 +230,8 @@ video {
   &:hover,
 	&:focus,
 	&:active {
-		border-color: _palette(accent);
-    color: _palette(accent);
+		border-color: var(--accent);
+    color: var(--accent);
 		outline: 0;
 	}
 }

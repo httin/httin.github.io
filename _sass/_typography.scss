@@ -1,0 +1,33 @@
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:    "Source Serif 4", Georgia, serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --step--1: clamp(0.83rem, 0.80rem + 0.15vw, 0.90rem);
+  --step-0:  clamp(1.00rem, 0.96rem + 0.22vw, 1.12rem);
+  --step-1:  clamp(1.20rem, 1.13rem + 0.36vw, 1.40rem);
+  --step-2:  clamp(1.44rem, 1.32rem + 0.58vw, 1.75rem);
+  --step-3:  clamp(1.73rem, 1.55rem + 0.90vw, 2.19rem);
+}
+
+html, button, input, select, textarea { font-family: var(--font-body); }
+body { font-size: var(--step-0); line-height: 1.62; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-strong);
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.014em;
+  margin: 2rem 0 1rem;
+  &:first-child { margin-top: 0; }
+}
+
+h1 { font-size: var(--step-3); font-weight: 700; }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); }
+h4, h5, h6 { font-size: var(--step-0); }
+
+code, pre, kbd, samp { font-family: var(--font-mono); }
+
+.katex-display { overflow-x: auto; overflow-y: hidden; }

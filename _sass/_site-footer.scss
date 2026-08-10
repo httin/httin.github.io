@@ -9,13 +9,13 @@
 .offsite-links {
   margin-bottom: 1.11111em;
   a {
-    color: _palette(primary);
+    color: var(--text);
     display: inline-block;
     font-size: 18px;
     margin-right: 15px;
     text-decoration: none;
     &:hover{
-      color: _palette(accent);
+      color: var(--accent);
     }
   }
 }
@@ -36,6 +36,17 @@
   &:hover {
     text-decoration: none;
   }
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 @media only screen and (min-width: 481px) {

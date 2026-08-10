@@ -1,0 +1,32 @@
+/* Colour tokens. Plain light values first so browsers without
+   light-dark() still render a correct light theme. */
+:root {
+  color-scheme: light dark;
+
+  --bg:          #fffdf9;
+  --surface:     #fbf5ea;
+  --text:        #514840;
+  --text-strong: #231a14;
+  --text-muted:  #7d7064;
+  --accent:      #8a6d2f;
+  --accent-soft: #f0d9a8;
+  --rule:        #efe3cd;
+}
+
+@supports (color: light-dark(#000, #fff)) {
+  :root {
+    --bg:          light-dark(#fffdf9, #211a15);
+    --surface:     light-dark(#fbf5ea, #2a221b);
+    --text:        light-dark(#514840, #bdae9f);
+    --text-strong: light-dark(#231a14, #f5ece0);
+    --text-muted:  light-dark(#7d7064, #9c8d7d);
+    --accent:      light-dark(#8a6d2f, #f0c26b);
+    --accent-soft: light-dark(#f0d9a8, #4a3a22);
+    --rule:        light-dark(#efe3cd, #3a2f26);
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}

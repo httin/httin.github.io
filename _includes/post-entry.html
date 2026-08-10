@@ -1,0 +1,12 @@
+<li class="entry">
+  <a class="entry-title" href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a>
+  {%- if include.post.description and include.post.description != "" %}
+  <p class="entry-desc">{{ include.post.description }}</p>
+  {%- endif %}
+  <p class="entry-meta">
+    <time datetime="{{ include.post.date | date: '%Y-%m-%d' }}">{{ include.post.date | date: '%Y-%m' }}</time>
+    {%- if include.post.tags.size > 0 %} &middot;
+    {% for tag in include.post.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag | cgi_escape }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+    {%- endif %}
+  </p>
+</li>

@@ -5,7 +5,6 @@ gem "jekyll", "~> 4.0.0"
 gem "liquid-c"
 
 group :jekyll_plugins do
-  gem 'jekyll-paginate'
   gem 'jekyll-sitemap'
   gem 'jekyll-katex'
 end

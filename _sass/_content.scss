@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .post {
-  border-bottom: 1px solid _palette(border);
+  border-bottom: 1px solid var(--rule);
   padding: 3.33333em 0 1.66667em;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .post-date {
-  color: _palette(meta);
+  color: var(--text-muted);
   display: inline-block;
   font-size: 14px;
   font-weight: bold;
@@ -48,96 +48,13 @@
     color: inherit;
     text-decoration: none;
     &:hover {
-      color: _palette(accent);
+      color: var(--accent);
     }
   }
 }
 
 .read-more {
   font-weight: bold;
-}
-
-/* Author profile */
-.author-box {
-  border-top: 1px solid _palette(border);
-  padding-top: 1.66667em;
-
-  .author-avatar {
-    background-size: cover;
-    border-radius: 50%;
-    display: block;
-    height: 90px;
-    float: left;
-    margin-right: 30px;
-    width: 90px;
-  }
-
-  .author-avatar + .author-details {
-    padding-left: 120px;
-  }
-
-  .author-title {
-    font-size: 1.11111rem;
-  }
-
-  .author-bio {
-    line-height: 1.5;
-
-    p {
-      margin-bottom: 1em;
-    }
-  }
-
-  .author-location,
-  .author-website {
-    color: _palette(meta);
-    display: inline-block;
-    font-family: _font(secondary);
-    font-size: 0.88889rem;
-    font-style: italic;
-    margin-bottom: 1rem;
-    margin-right: 5px;
-  }
-
-  @media only screen and (max-width: 480px) {
-    .author-avatar {
-      float: none;
-      margin-bottom: 1.25em;
-      margin-right: 0;
-    }
-
-    .author-avatar + .author-details {
-      padding-left: 0;
-    }
-  }
-}
-
-/* Share post */
-.post-share {
-  padding: 1.66667em 0 3.33333em;
-  span {
-    color: _palette(meta);
-    display: inline-block;
-    font-size: 0.88889em;
-    margin-right: 15px;
-  }
-  a {
-    border: 1px solid _palette(border);
-    border-radius: 3px;
-    color: _palette(primary);
-    display: inline-block;
-    font-size: 14px;
-    margin-bottom: 0.5em;
-    margin-right: 5px;
-    padding: 3px 10px;
-    text-decoration: none;
-    -webkit-transition: .3s ease;
-    transition: .3s ease;
-    &:hover {
-      border-color: _palette(accent);
-      color: _palette(accent);
-    }
-  }
 }
 
 /* Archive page */
@@ -152,7 +69,7 @@
 }
 
 .archive-top-link {
-  color: _palette(meta);
+  color: var(--text-muted);
   font-size: 0.88889em;
   margin-bottom: 1.25em;
 }
@@ -166,9 +83,97 @@
 }
 
 .archive-meta {
-  color: _palette(meta);
+  color: var(--text-muted);
   .archive-date {
     font-size: 14px;
     font-weight: bold;
   }
+}
+
+.cat-group { margin-bottom: 2.75rem; }
+
+.cat-head {
+  align-items: baseline;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  font-size: var(--step-1);
+  justify-content: space-between;
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.45rem;
+}
+
+.cat-count {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7em;
+}
+
+.cat-blurb {
+  color: var(--text-muted);
+  margin: 0 0 1.1rem;
+  max-width: 56ch;
+}
+
+.entry-list { list-style: none; margin: 0; padding: 0; }
+.entry { margin-bottom: 1.1rem; }
+
+.entry-title {
+  color: var(--text-strong);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+
+  &:hover { color: var(--accent); text-decoration-color: var(--accent); }
+}
+
+.entry-desc { color: var(--text-muted); margin: 0.15rem 0 0; max-width: 58ch; }
+
+.entry-meta {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  margin: 0.25rem 0 0;
+}
+
+.hub-intro {
+  font-size: var(--step-1);
+  margin-bottom: 2.5rem;
+  max-width: 54ch;
+
+  p { margin-bottom: 0.9rem; }
+}
+
+.hub-label {
+  border-bottom: 1px solid var(--rule);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  margin: 2.5rem 0 1.1rem;
+  padding-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.hub-more {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  margin-top: -0.4rem;
+}
+
+.hub-elsewhere {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+
+  span { color: var(--text-muted); }
+}
+
+/* On the homepage the category name is a small label, not a section head. */
+.hub-label + .cat-group .cat-head {
+  border-bottom: 0;
+  font-size: var(--step-0);
+  margin-bottom: 0.35rem;
+  padding-bottom: 0;
 }

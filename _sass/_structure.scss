@@ -1,8 +1,33 @@
-/* ==========================================================================
-   3. Structure
-   ========================================================================== */
+:root {
+  --measure: 68ch;
+  --page: 1100px;
+}
 
 .inner {
   margin: 0 auto;
-  max-width: 760px;
+  max-width: var(--page);
+  padding-inline: 1.5rem;
+}
+
+.prose {
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+/* Code, tables and figures break out of the prose measure. */
+.prose > .wide,
+.prose > pre,
+.prose > figure,
+.prose > table {
+  max-width: #{"min(100% + 12rem, var(--page))"};
+  margin-inline: auto;
+}
+
+@media only screen and (max-width: 900px) {
+  .prose > .wide,
+  .prose > pre,
+  .prose > figure,
+  .prose > table {
+    max-width: 100%;
+  }
 }

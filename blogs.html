@@ -1,13 +1,41 @@
 ---
 layout: default
-title: Blogs
+title: Writing
 permalink: /blogs/
 ---
 
-<main class="main-content fadeInDown delay_075s">
+<main class="main-content prose">
+  <h1>Writing</h1>
 
-  {% for post in site.posts %}
-  {% include post-card.html %}
-  {% endfor %}
+  {%- comment -%} Build a delimited index of listed names for lookup. {%- endcomment -%}
+  {%- assign listed = "|" -%}
+  {%- for cat in site.data.categories -%}
+    {%- assign listed = listed | append: cat.name | append: "|" -%}
+  {%- endfor -%}
 
-</main><!-- .site-main -->
+  {%- comment -%} 1. Categories from the data file, in file order. {%- endcomment -%}
+  {%- for cat in site.data.categories -%}
+    {%- assign group = site.categories[cat.name] -%}
+    {%- if group and group.size > 0 -%}
+      {% include category-group.html name=cat.name blurb=cat.blurb posts=group %}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%} 2. Any other category, alphabetically. {%- endcomment -%}
+  {%- assign others = site.categories | sort -%}
+  {%- assign empty_blurb = "" -%}
+  {%- for pair in others -%}
+    {%- assign cname = pair[0] -%}
+    {%- assign cposts = pair[1] -%}
+    {%- assign probe = "|" | append: cname | append: "|" -%}
+    {%- unless listed contains probe -%}
+      {% include category-group.html name=cname blurb=empty_blurb posts=cposts %}
+    {%- endunless -%}
+  {%- endfor -%}
+
+  {%- comment -%} 3. Posts with no category at all. {%- endcomment -%}
+  {%- assign uncategorised = site.posts | where_exp: "p", "p.categories.size == 0" -%}
+  {%- if uncategorised.size > 0 -%}
+    {% include category-group.html name="Other" blurb=empty_blurb posts=uncategorised %}
+  {%- endif -%}
+</main>

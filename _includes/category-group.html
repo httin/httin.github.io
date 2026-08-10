@@ -1,0 +1,14 @@
+<section class="cat-group">
+  <h2 class="cat-head">
+    <span class="cat-name">{{ include.name }}</span>
+    <span class="cat-count">{{ include.posts.size }}</span>
+  </h2>
+  {%- if include.blurb and include.blurb != "" %}
+  <p class="cat-blurb">{{ include.blurb }}</p>
+  {%- endif %}
+  <ul class="entry-list">
+    {%- for p in include.posts %}
+    {% include post-entry.html post=p %}
+    {%- endfor %}
+  </ul>
+</section>

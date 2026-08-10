@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .site-header {
-  border-bottom: 1px solid _palette(border);
+  border-bottom: 1px solid var(--rule);
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
@@ -15,26 +15,14 @@
 }
 
 .site-title {
-  color: _palette(secondary);
-  font-family: _font(secondary);
-  font-size: 1.66667rem;
-  font-weight: bold;
-  letter-spacing: -1px;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 700;
+  letter-spacing: -0.015em;
   line-height: 1.2;
   margin: 0 15px 0 0;
 
-  @media only screen and (max-width: 600px) {
-    font-size: 1.5rem;
-    letter-spacing: normal;
-  }
-
-  a {
-    color: _palette(secondary);
-    text-decoration: none;
-    &:hover {
-      color: _palette(accent);
-    }
-  }
+  a { color: var(--text-strong); text-decoration: none; }
 }
 
 /* Navigation */
@@ -43,24 +31,23 @@
 }
 
 .menu {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
   list-style: none;
   margin: 0;
   padding: 0;
+
+  a { color: var(--text-muted); text-decoration: none; }
+  a:hover, .nav-current { color: var(--accent); }
 }
 
 .menu-item {
   display: inline-block;
   margin: 0 0 0 15px;
   a {
-    color: _palette(meta);
     display: inline-block;
-    font-size: 0.88889rem;
     font-weight: bold;
     padding: 5px 0;
-    text-decoration: none;
-    &:hover {
-      color: _palette(accent);
-    }
   }
 }
 
@@ -70,7 +57,7 @@
 
 /* Site description */
 .site-description {
-  border-bottom: 1px solid _palette(border);
+  border-bottom: 1px solid var(--rule);
   font-family: _font(secondary);
   font-size: 1.33333em;
   font-style: italic;
@@ -106,7 +93,7 @@
 
   .site-navigation {
     -webkit-overflow-scrolling: touch;
-    background: #fff;
+    background: var(--bg);
     bottom: 0;
     left: 0;
     margin: 0;
@@ -133,7 +120,7 @@
   }
 
   .menu-item {
-    border-bottom: 1px solid _palette(border);
+    border-bottom: 1px solid var(--rule);
     display: block;
     margin: 0;
     &:last-child {
