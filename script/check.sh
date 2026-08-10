@@ -36,9 +36,10 @@ assert_file "$HOME" "homepage is generated"
 assert_file "$POST" "post page is generated"
 assert_contains "$POST" 'class="katex' "post still renders KaTeX server-side"
 
-assert_contains "$CSS" "color-scheme:light dark" "css declares color-scheme"
+assert_contains "$CSS" "color-scheme:light" "css pins the light colour scheme"
 assert_contains "$CSS" "--accent:" "css defines the accent token"
-assert_contains "$CSS" "light-dark(" "css uses light-dark() for theming"
+assert_contains "$CSS" "#fffdf9" "css uses the warm white background"
+assert_absent "$CSS" "light-dark(" "no dark-mode branch remains"
 
 assert_contains "$CSS" "--font-display:" "css defines the display font token"
 assert_contains "$HOME" "Fraunces" "homepage loads Fraunces"

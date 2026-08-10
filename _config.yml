@@ -52,6 +52,22 @@ permalink: /:title
 # Conversion
 markdown: kramdown
 
+# Files that must never reach the published site. Setting this key replaces
+# Jekyll's defaults, so the default entries are repeated here.
+exclude:
+  - docs/
+  - script/
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
 # Sass
 sass:
   sass_dir: _sass

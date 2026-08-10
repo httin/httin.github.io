@@ -15,5 +15,8 @@ vendor/bundle
 .sass-cache
 _asset_bundler_cache
 _site
-# Brainstorming companion
+
+# Local tooling and working notes.
+.claude/
 .superpowers/
+docs/superpowers/

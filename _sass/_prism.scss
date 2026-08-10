@@ -13,17 +13,6 @@
   --code-plain:    var(--text);
 }
 
-@supports (color: light-dark(#000, #fff)) {
-  :root {
-    --code-comment:  light-dark(#8a7b6c, #7a6d60);
-    --code-keyword:  light-dark(#a8632c, #e0a05c);
-    --code-string:   light-dark(#6a7f3a, #a8bf72);
-    --code-number:   light-dark(#9a5b8a, #d093c0);
-    --code-function: light-dark(#4a6f8a, #8fb6d4);
-    --code-punct:    light-dark(#7d7064, #9c8d7d);
-  }
-}
-
 code[class*="language-"],
 pre[class*="language-"] {
   color: var(--code-plain);

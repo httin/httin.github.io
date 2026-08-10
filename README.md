@@ -26,3 +26,50 @@
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=httin&show_icons=true&locale=en&layout=compact" alt="httin" /></p>
 
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=httin&show_icons=true&locale=en" alt="httin" /></p>
+
+---
+
+<h3 align="left">Running this site locally</h3>
+
+This site is Jekyll. GitHub Actions builds it with Ruby 3.3, so use the same
+version locally. A newer Ruby cannot build it: Ruby 3.4 removed `csv`, `base64`
+and `bigdecimal` from the default gems, and Ruby 4.0 removed `CGI.parse`, which
+the `rouge` syntax highlighter calls.
+
+Install Ruby 3.3 one time:
+
+```bash
+brew install ruby@3.3
+```
+
+Homebrew keeps `ruby@3.3` keg-only, so put it first on `PATH` in each shell:
+
+```bash
+export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH"
+ruby -v   # must print 3.3.x
+```
+
+Install the gems one time:
+
+```bash
+bundle install
+```
+
+Preview the site at <http://127.0.0.1:4000/>. The pages rebuild when you save a
+file:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+`_config.yml` is the one exception. Jekyll does not reload it, so restart the
+server after you change it.
+
+Check the build before you push:
+
+```bash
+./script/check.sh
+```
+
+The script builds the site and asserts facts about the generated HTML and CSS.
+It exits 0 when all assertions pass.
