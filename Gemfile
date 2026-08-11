@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 
-# This will help ensure the proper Jekyll version is running.
-gem "jekyll", "~> 4.0.0"
+# Jekyll 4.4 or later. Earlier versions do not declare csv, base64 and
+# bigdecimal, which Ruby 3.4 removed from the default gems.
+gem "jekyll", "~> 4.4"
 gem "liquid-c"
 
 group :jekyll_plugins do
