@@ -15,6 +15,9 @@ Ordered Set is a policy-based data structure from the GNU C++ library. Like **st
 
 
 <!--more-->
+
+{% include image_full.html imageurl="/images/posts/ordered-set/ordered-set-poster.png" title="Ordered Set rank queries" %}
+
 ## Introduction
 To use this data structure, we need to build it from the PBDS (policy-based data structures) library
 
