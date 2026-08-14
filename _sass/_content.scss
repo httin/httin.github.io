@@ -115,7 +115,23 @@
 }
 
 .entry-list { list-style: none; margin: 0; padding: 0; }
-.entry { margin-bottom: 1.1rem; }
+
+.entry {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: 148px 1fr;
+  margin-bottom: 1.1rem;
+}
+
+.entry-thumb {
+  border-radius: 4px;
+  grid-column: 1;
+  height: 148px;
+  object-fit: cover;
+  width: 148px;
+}
+
+.entry-body { grid-column: 2; }
 
 .entry-title {
   color: var(--text-strong);
@@ -128,7 +144,7 @@
   &:hover { color: var(--accent); text-decoration-color: var(--accent); }
 }
 
-.entry-desc { color: var(--text-muted); margin: 0.15rem 0 0; max-width: 58ch; }
+.entry-desc { color: var(--text-muted); margin: 0.15rem 0 0; max-width: 62ch; }
 
 .entry-meta {
   color: var(--text-muted);

@@ -1,0 +1,24 @@
+/* ==========================================================================
+   9. Code highlighting (Rouge)
+   ========================================================================== */
+
+:root {
+  --code-comment:  #8a7b6c;
+  --code-keyword:  #a8632c;
+  --code-string:   #6a7f3a;
+  --code-number:   #9a5b8a;
+  --code-function: #4a6f8a;
+  --code-punct:    #7d7064;
+  --code-plain:    var(--text);
+}
+
+.highlight {
+  color: var(--code-plain);
+
+  .c, .c1, .cm, .cp, .cpf, .cs { color: var(--code-comment); }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt { color: var(--code-keyword); }
+  .s, .s1, .s2, .sa, .sb, .sc, .sd, .se, .sh, .si, .sr, .ss, .sx, .dl { color: var(--code-string); }
+  .m, .mb, .mf, .mh, .mi, .il, .mo, .mx, .no { color: var(--code-number); }
+  .na, .nb, .nc, .nf, .nn, .nt { color: var(--code-function); }
+  .o, .ow, .p { color: var(--code-punct); }
+}

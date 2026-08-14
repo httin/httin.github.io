@@ -30,6 +30,7 @@ CSS=_site/assets/css/style.css
 HOME=_site/index.html
 BLOGS=_site/blogs/index.html
 POST='_site/Ordered-Set-data-structure-in-C++.html'
+POST2='_site/Line-Sweep-Algorithm.html'
 
 echo "==> assertions"
 assert_file "$HOME" "homepage is generated"
@@ -62,6 +63,7 @@ assert_file "_includes/post-entry.html" "post entry include exists"
 assert_contains "$BLOGS" "Data Structures and Algorithms" "archive shows the category heading"
 assert_contains "$BLOGS" "cat-blurb" "archive shows the category blurb"
 assert_contains "$BLOGS" "Ordered Set data structure" "archive lists the post"
+assert_contains "$BLOGS" "entry-thumb" "archive shows a thumbnail for the post that sets one"
 
 assert_contains "$HOME" "hub-intro" "homepage has the intro block"
 assert_contains "$HOME" "All writing" "homepage links to the full archive"
@@ -69,7 +71,12 @@ assert_contains "$HOME" "Projects" "homepage has a projects section"
 assert_missing "_includes/post-card.html" "old post-card include is deleted"
 
 assert_absent "$POST" "cpp-binary" "stock feature image is gone from the post"
-assert_contains "$CSS" "--code-keyword" "prism tokens use custom properties"
+assert_contains "$CSS" "--code-keyword" "code tokens use custom properties"
 assert_missing "images/cpp-binary.jpg" "stock feature image file is deleted"
+
+assert_contains "$CSS" ".highlight .k," "css maps rouge keyword tokens to a color"
+assert_absent "$CSS" ".token." "old prismjs token selectors are gone"
+assert_contains "$POST2" 'class="language-cpp' "C++ code block is highlighted"
+assert_contains "$POST2" 'class="heading-anchor"' "section headings are self-links"
 
 exit $FAIL

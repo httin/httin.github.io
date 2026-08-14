@@ -20,3 +20,5 @@ _site
 .claude/
 .superpowers/
 docs/superpowers/
+.venv/
+script/__pycache__/
