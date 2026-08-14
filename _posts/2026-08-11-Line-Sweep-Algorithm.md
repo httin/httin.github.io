@@ -9,7 +9,7 @@ categories: ["Data Structures and Algorithms"]
 tags: [algorithms, geometry]
 ---
 
-The line sweep is a standard way to turn a 2D geometry problem into a sorted sequence of events. You pick an axis, sort by it, and walk through the input once while maintaining a set of objects that are still relevant. For closest pair, that set stays small enough that each step is cheap.
+The line sweep is a standard way to turn a 2D geometry problem into a sorted sequence of events. You pick an axis, sort by it, and walk through the input once while maintaining a set of objects that are still relevant.
 
 <!--more-->
 
