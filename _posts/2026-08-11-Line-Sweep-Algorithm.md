@@ -137,7 +137,7 @@ int main() {
         return sq(p[a].x - p[b].x) + sq(p[a].y - p[b].y);
     };
 
-    long long best = dist2(0, 1);      // seed with the first pair; n >= 2 here
+    long long d2 = dist2(0, 1);        // seed with the first pair; n >= 2 here
     int ansA = p[0].id, ansB = p[1].id;
 
     set<pair<int, int>> active;        // (y, position); when points in the set have the same y, they sit in index order: (y, 0), (y, 2), (y, 5), ...
@@ -147,22 +147,22 @@ int main() {
     int left = 0;
     for (int i = 2; i < n; ++i) {
         // 1. Retire points too far left.
-        while (left < i && sq(p[i].x - p[left].x) >= best) {
+        while (left < i && sq(p[i].x - p[left].x) >= d2) {
             active.erase({p[left].y, left});
             ++left;
         }
 
-        // 2. Half-height of the band: ceil(sqrt(best)).
-        long long d = (long long)sqrt((double)best);
-        while (d * d < best) ++d;
+        // 2. Half-height of the band: ceil(sqrt(d2)).
+        long long d = (long long)sqrt((double)d2);
+        while (d * d < d2) ++d;
 
         // 3. Walk the band. At most six points live here.
         auto it = active.lower_bound({(int)(p[i].y - d), INT_MIN});
         for (; it != active.end() && it->first <= p[i].y + d; ++it) {
             const Point& q = p[it->second];
             long long dist = sq(p[i].x - q.x) + sq(p[i].y - q.y);
-            if (dist < best) {
-                best = dist;
+            if (dist < d2) {
+                d2 = dist;
                 ansA = q.id;
                 ansB = p[i].id;
             }
@@ -173,28 +173,28 @@ int main() {
 
     if (ansA > ansB) swap(ansA, ansB);
     cout << ansA << ' ' << ansB << '\n'
-         << fixed << setprecision(6) << sqrt((double)best) << '\n';
+         << fixed << setprecision(6) << sqrt((double)d2) << '\n';
     return 0;
 }
 ```
 
 A few implementation details that are easy to get wrong:
 
-**Seed `best` from the first two points.** After sorting, `p[0]` and `p[1]` are the leftmost pair, so their distance is a valid starting value for {% katex %}d{% endkatex %}. The main loop then starts at {% katex %}i = 2{% endkatex %} with both points already in the active set. That avoids a sentinel like `LLONG_MAX` and a cap like `SPAN` just to widen the band before the first comparison.
+**Seed `d2` from the first two points.** After sorting, `p[0]` and `p[1]` are the leftmost pair, so their squared distance is a valid starting value for {% katex %}d^2{% endkatex %}. The main loop then starts at {% katex %}i = 2{% endkatex %} with both points already in the active set.
 
-**Compare squared distances, not lengths.** With {% katex %}|x|, |y| \le 10^6{% endkatex %}, so a squared distance is at most {% katex %}2 \times (2 \times 10^6)^2 = 8 \times 10^{12}{% endkatex %}, which fits in a `long long`. Keep `best` as {% katex %}d^2{% endkatex %} so the inner loop stays exact integer arithmetic; `sqrt` is only for the band width and the final output.
+**Compare squared distances, not lengths.** With {% katex %}|x|, |y| \le 10^6{% endkatex %}, every squared distance fits in a `long long`. Store it as `d2`; the inner loop stays exact integer arithmetic, and `sqrt` is only for the band width and the final output.
 
 **The window is a two-pointer.** `left` only ever moves forward, so each point is erased exactly once across the entire run. If you rebuild the window per point instead, you have written the quadratic loop again with a `std::set` bolted on.
 
 **Key the set on `(y, position)`.** Points share {% katex %}y{% endkatex %} values constantly. With a bare {% katex %}y{% endkatex %} key, a `set` silently drops the duplicates and an erase removes the wrong point. The position makes every key unique and gives you a way back to the coordinates.
 
-**Round the band up, not down.** Eviction compares squares and stays exact, but building the `lower_bound` key needs a real length, so `d` has to be a rounded {% katex %}\sqrt{best}{% endkatex %}. Rounding up is safe: it can only widen the band, and every candidate is re-checked with exact integer arithmetic anyway. Rounding down can push the true closest pair outside the band and lose the answer.
+**Round the band up, not down.** Building the `lower_bound` key needs a real length, so `d` has to be {% katex %}\lceil\sqrt{d^2}\rceil{% endkatex %}. Rounding up is safe: it can only widen the band, and every candidate is re-checked with exact integer arithmetic anyway. Rounding down can push the true closest pair outside the band and lose the answer.
 
-An edge case in the constraints: Duplicate points drive `best` to 0, and then the eviction test `dx*dx >= 0` is always true, so the active set empties on every step. That stays correct and stays linear, since each point is still erased only once.
+An edge case in the constraints: duplicate points drive `d2` to 0, and then the eviction test `dx*dx >= 0` is always true, so the active set empties on every step. That stays correct and stays linear, since each point is still erased only once.
 
 ## The same pattern elsewhere
 
-Strip away the closest-pair details and the pattern is:
+The pattern is:
 
 1. Turn the input into events along one axis.
 2. Sort them.
@@ -231,7 +231,7 @@ for (auto& [pos, delta] : ev) {
 }
 ```
 
-The comparator's second branch is the whole problem. When one interval ends exactly where the next begins, do they overlap? For closed intervals, yes, and opens must be processed first. For half-open intervals, a meeting room freed at 10:00 and booked at 10:00 does not conflict, so closes go first. Sorting by coordinate alone leaves the answer to whatever your sort does with ties, which means it can pass your test data and fail in production. Put the tie-break in the comparator and say why in a comment.
+The comparator's second branch is the whole problem. When one interval ends exactly where the next begins, do they overlap? For closed intervals, yes, and opens must be processed first. For half-open intervals, a meeting room freed at 10:00 and booked at 10:00 does not conflict, so closes go first. Sort on coordinate alone and tied events land in arbitrary order is wrong in general.
 
 No extra data structure is needed here. Sorting and a counter are enough.
 
