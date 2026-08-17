@@ -2,6 +2,28 @@
 layout: default
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "image": {{ page.thumbnail | default: site.data.author.image | absolute_url | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "mainEntityOfPage": {{ page.url | absolute_url | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ site.data.author.name | jsonify }},
+    "url": {{ site.data.author.url | jsonify }}
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": {{ site.data.author.name | jsonify }}
+  }
+}
+</script>
+
 <main class="main-content prose">
   <article class="post">
     <header class="post-header">
