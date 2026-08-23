@@ -1,3 +1,5 @@
+@use "functions" as *;
+
 /* ==========================================================================
    4. Site Header
    ========================================================================== */
@@ -58,7 +60,7 @@
 /* Site description */
 .site-description {
   border-bottom: 1px solid var(--rule);
-  font-family: _font(secondary);
+  font-family: font(secondary);
   font-size: 1.33333em;
   font-style: italic;
   padding-bottom: 3.33333rem;

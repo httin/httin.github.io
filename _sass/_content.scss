@@ -1,3 +1,5 @@
+@use "functions" as *;
+
 /* ==========================================================================
    5. Content
    ========================================================================== */
@@ -20,7 +22,7 @@
 }
 
 .post-meta {
-  font-family: _font(secondary);
+  font-family: font(secondary);
   font-size: 0.88889rem;
   font-style: italic;
   margin-bottom: 1.11111rem;

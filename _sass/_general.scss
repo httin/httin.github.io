@@ -1,3 +1,5 @@
+@use "functions" as *;
+
 /* ==========================================================================
    2. General
    ========================================================================== */
@@ -66,7 +68,7 @@ pre {
 blockquote {
   border-left: 3px solid var(--text-strong);
   color: var(--text-strong);
-  font-family: _font(secondary);
+  font-family: font(secondary);
   font-style: italic;
   margin: 0 0 1.66667em -30px;
   padding: 0 0 0 30px;

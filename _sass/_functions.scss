@@ -1,3 +1,12 @@
+@use "sass:list";
+@use "sass:map";
+
+// Font.
+$font: (
+  primary: ("Lato","Helvetica Neue",Helvetica,sans-serif),
+  secondary: ("Noto Serif",Georgia,serif)
+);
+
 /// Removes a specific item from a list.
 /// @author Hugo Giraudel
 /// @param {list} $list List.
@@ -19,12 +28,15 @@
   @else {
 
     $result: ();
-    $index: if($index < 0, length($list) + $index + 1, $index);
+
+    @if $index < 0 {
+      $index: length($list) + $index + 1;
+    }
 
     @for $i from 1 through length($list) {
 
       @if $i != $index {
-        $result: append($result, nth($list, $i));
+        $result: append($result, list.nth($list, $i));
       }
 
     }
@@ -42,12 +54,12 @@
 /// @return {string} Value.
 @function val($map, $keys...) {
 
-  @if nth($keys, 1) == null {
+  @if list.nth($keys, 1) == null {
     $keys: remove-nth($keys, 1);
   }
 
   @each $key in $keys {
-    $map: map-get($map, $key);
+    $map: map.get($map, $key);
   }
 
   @return $map;
@@ -57,6 +69,6 @@
 /// Gets a font value.
 /// @param {string} $keys Key(s).
 /// @return {string} Value.
-@function _font($keys...) {
+@function font($keys...) {
   @return val($font, $keys...);
 }

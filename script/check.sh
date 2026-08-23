@@ -31,6 +31,7 @@ HOME=_site/index.html
 BLOGS=_site/blogs/index.html
 POST='_site/Ordered-Set-data-structure-in-C++.html'
 POST2='_site/Line-Sweep-Algorithm.html'
+POST3='_site/Coordinate-Compression.html'
 
 echo "==> assertions"
 assert_file "$HOME" "homepage is generated"
@@ -78,5 +79,11 @@ assert_contains "$CSS" ".highlight .k," "css maps rouge keyword tokens to a colo
 assert_absent "$CSS" ".token." "old prismjs token selectors are gone"
 assert_contains "$POST2" 'class="language-cpp' "C++ code block is highlighted"
 assert_contains "$POST2" 'class="heading-anchor"' "section headings are self-links"
+
+assert_file "$POST3" "coordinate compression post is generated"
+assert_contains "$POST3" 'class="katex' "coordinate compression post renders KaTeX"
+assert_contains "$POST3" "rank-fold.gif" "post embeds the rank GIF"
+assert_contains "$POST3" "maze-compress.gif" "post embeds the maze GIF"
+assert_contains "$BLOGS" "Coordinate Compression" "archive lists the new post"
 
 exit $FAIL

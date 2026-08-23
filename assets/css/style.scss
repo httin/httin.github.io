@@ -21,22 +21,16 @@
   9. Code highlighting
 */
 
-// Font.
-$font: (
-  primary: ("Lato","Helvetica Neue",Helvetica,sans-serif),
-  secondary: ("Noto Serif",Georgia,serif)
-);
-
 // Imports
-@import "tokens";
-@import "typography";
-@import "functions";
-@import "reset";
-@import "general";
-@import "structure";
-@import "site-header";
-@import "content";
-@import "posts-navigation";
-@import "site-footer";
-@import "animations";
-@import "code";
+@use "tokens";
+@use "typography";
+@use "functions";
+@use "reset";
+@use "general";
+@use "structure";
+@use "site-header";
+@use "content";
+@use "posts-navigation";
+@use "site-footer";
+@use "animations";
+@use "code";

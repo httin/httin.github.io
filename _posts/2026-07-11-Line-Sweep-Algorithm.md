@@ -2,7 +2,7 @@
 layout: post
 title: "Line Sweep Algorithm"
 description: "A moving vertical line turns a quadratic geometry problem into an ordered pair."
-date: 2026-08-11
+date: 2026-07-11
 thumbnail: /images/posts/line-sweep/closest-pair-sweep-poster.png
 katex: 1
 categories: ["Data Structures and Algorithms"]
@@ -54,13 +54,13 @@ Here is the brute force against the sweep
 | 100000 | 2.13s | 0.18s |
 | 200000 | 8.55s | 0.36s |
 
-When {% katex %}n{% endkatex %} doubles, the brute force time roughly quadruples. The sweep time roughly doubles.
+When {% katex %}n{% endkatex %} doubles, the brute force time roughly quadruples, while the sweep time roughly doubles.
 
-Most of that work is wasted. Once you have found a pair at distance 40, there is no point checking two points a million units apart.
+Most of brute force work is wasted. Once you have found a pair at distance 40, there is no point checking two points a million units apart.
 
 ## Sweep Line
 
-Sort the points by {% katex %}x{% endkatex %}, then walk a vertical line left to right. At each stop, keep a running best distance {% katex %}d{% endkatex %} and only compare against points that can still beat it.
+Sort the points by {% katex %}x{% endkatex %}, then walk a vertical line left to right. At each point, keep a running best distance {% katex %}d{% endkatex %} and only compare against points that can still beat it.
 
 {% include image_full.html imageurl="/images/posts/line-sweep/closest-pair-sweep-poster.png" title="Closest pair line sweep, final step" caption="Step 10/10 at point H. Red: sweep line and current point. Blue: active set. Green box: candidate band (width d, height 2d). Orange: best pair so far." %}
 
@@ -258,4 +258,4 @@ Before writing a sweep, answer two questions: **what leaves the active set, and 
 - [My Calendar II](https://leetcode.com/problems/my-calendar-ii/description/)
 - [Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/)
 - [The Skyline Problem](https://leetcode.com/problems/the-skyline-problem/): the active set becomes a multiset of heights.
-- Union of rectangle areas: the natural next step, where the active set needs a segment tree over compressed coordinates.
+- Union of rectangle areas: the natural next step, where the active set needs a segment tree over [compressed coordinates](/Coordinate-Compression).
