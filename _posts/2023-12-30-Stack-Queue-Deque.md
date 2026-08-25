@@ -75,7 +75,7 @@ Easy mistakes:
 
 **In a contest, a `vector` is usually the better stack.** `std::stack` is an adapter where the default inner container is `deque`. What you want most of the time is `vector` plus `push_back` / `pop_back`: one contiguous buffer, nicer cache behaviour, and you can print the contents when something looks off.
 
-**A long path can overflow recursion.** Each recursive call adds a frame to the call stack (return address, arguments, locals). Stack memory is small and fixed so {% katex %}10^5{% endkatex %} nested calls usually do not fit. `std::stack` grows on the heap memory, so the version above is fine.
+**A long path can overflow recursion.** Each recursive call adds a frame to the call stack (return address, arguments, locals). Stack memory is small and fixed so {% katex %}10^5{% endkatex %} nested calls usually do not fit. `std::stack` grows on the heap memory, so it's fine.
 
 ### Methods and complexity
 
@@ -281,7 +281,7 @@ The map is a normal contiguous array of pointers, one pointer per block. It also
 
 That is why `int& x = dq[3];` still works after a `push_front`. `x` points at the int, and it did not move. An iterator is different: it also remembers "which entry in the map am I on?" After the list is replaced, that entry is gone, so the iterator is dead.
 
-`operator[]` is still {% katex %}O(1){% endkatex %}: divide the index by the block length, pick that map slot, then take the leftover as the offset inside the block. A long scan is slower than `vector` because you keep falling off the end of a block. The iterator does that jump in `operator++`:
+`operator[]` is still {% katex %}O(1){% endkatex %}. Index 200 with 128 ints per block is block 1, slot 72. A long walk is still slower than `vector`, because every 128 steps you leave a block and pick up the next pointer in the map. `operator++` does that jump:
 
 ```cpp
 _Self& operator++() {
@@ -294,7 +294,7 @@ _Self& operator++() {
 }
 ```
 
-`_M_cur`, `_M_first`, and `_M_last` are ordinary `T*` into the current block. `_M_node` is the `T**` slot. Crossing a block is two pointer writes, not a walk of the whole container. That is also why a middle `insert` is linear: it has to shift elements toward the nearer end, block by block.
+`_M_cur` is the current int. `_M_first` and `_M_last` are the ends of this block. `_M_node` is the map slot. When `_M_cur` hits `_M_last`, you switch to the next slot and start at the first int of that block. A middle `insert` is still linear. Everything from the insert point to the nearer end has to shift, one block at a time.
 
 ### 0-1 BFS
 
