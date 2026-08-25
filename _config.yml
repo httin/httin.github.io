@@ -12,7 +12,7 @@ lang: en-US
 title: "Tin Huynh"
 
 # A description of your site for meta tag, search engine results.
-description: "A developer who loves doing Math"
+description: "If I were not a developer, I would be a mathematician."
 
 # The subpath of your site, e.g. /blog, for generating urls.
 baseurl: ""

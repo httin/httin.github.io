@@ -6,7 +6,7 @@ date: 2026-08-20
 thumbnail: /images/posts/coordinate-compression/coordinate-compression-poster.png
 katex: 1
 categories: ["Data Structures and Algorithms"]
-tags: [algorithms, datastructures]
+tags: [algorithms, datastructures, graph]
 ---
 
 <!--more-->

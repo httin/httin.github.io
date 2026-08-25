@@ -32,6 +32,7 @@ BLOGS=_site/blogs/index.html
 POST='_site/Ordered-Set-data-structure-in-C++.html'
 POST2='_site/Line-Sweep-Algorithm.html'
 POST3='_site/Coordinate-Compression.html'
+POST4='_site/Stack-Queue-Deque.html'
 
 echo "==> assertions"
 assert_file "$HOME" "homepage is generated"
@@ -85,5 +86,13 @@ assert_contains "$POST3" 'class="katex' "coordinate compression post renders KaT
 assert_contains "$POST3" "rank-fold.gif" "post embeds the rank GIF"
 assert_contains "$POST3" "maze-compress.gif" "post embeds the maze GIF"
 assert_contains "$BLOGS" "Coordinate Compression" "archive lists the new post"
+
+assert_file "$POST4" "stack queue deque post is generated"
+assert_contains "$POST4" 'class="katex' "stack queue deque post renders KaTeX"
+assert_contains "$POST4" "dfs-stack.gif" "post embeds the DFS GIF"
+assert_contains "$POST4" "bfs-queue.gif" "post embeds the BFS GIF"
+assert_contains "$POST4" "sliding-window-deque.gif" "post embeds the window GIF"
+assert_contains "$POST4" "zero-one-bfs.gif" "post embeds the 0-1 BFS GIF"
+assert_contains "$BLOGS" "Stack, Queue, and Deque" "archive lists the stack queue deque post"
 
 exit $FAIL
