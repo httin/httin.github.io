@@ -1,0 +1,70 @@
+/* ==========================================================================
+   10. Post table of contents
+   ========================================================================== */
+
+/* .prose caps `main` at the reading measure; move that cap onto .post-body
+   instead so `.post` is free to widen and host a sidebar column on wide
+   screens, while narrow screens render exactly as before. */
+.post-body {
+  margin-inline: auto;
+  max-width: var(--measure);
+}
+
+.post-toc { display: none; }
+.post-toc:empty { display: none; }
+
+@media (min-width: 1200px) {
+  .post-main { max-width: var(--page); }
+
+  .post {
+    column-gap: 2rem;
+    display: grid;
+    grid-template-columns: 1fr var(--measure) 220px;
+  }
+
+  .post-body {
+    grid-column: 2;
+    margin-inline: 0;
+  }
+
+  .post-toc {
+    align-self: start;
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    grid-column: 3;
+    max-height: calc(100vh - 9rem);
+    overflow-y: auto;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .post-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .post-toc > ul > li { margin-bottom: 0.6rem; }
+
+  .post-toc ul ul {
+    margin-top: 0.4rem;
+    padding-left: 0.9rem;
+  }
+
+  .post-toc ul ul li { margin-bottom: 0.4rem; }
+
+  .post-toc a {
+    color: var(--text-muted);
+    display: block;
+    line-height: 1.4;
+    text-decoration: none;
+
+    &:hover { color: var(--accent); }
+
+    &.is-active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+  }
+}

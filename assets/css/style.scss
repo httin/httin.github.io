@@ -19,6 +19,7 @@
   7. Site Footer
   8. Animations
   9. Code highlighting
+  10. Post table of contents
 */
 
 // Imports
@@ -30,6 +31,7 @@
 @use "structure";
 @use "site-header";
 @use "content";
+@use "post-toc";
 @use "posts-navigation";
 @use "site-footer";
 @use "animations";
