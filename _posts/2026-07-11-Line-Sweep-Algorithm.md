@@ -178,7 +178,7 @@ int main() {
 }
 ```
 
-A few implementation details that are easy to get wrong:
+A few implementation details that are noticable:
 
 **Seed `d2` from the first two points.** After sorting, `p[0]` and `p[1]` are the leftmost pair, so their squared distance is a valid starting value for {% katex %}d^2{% endkatex %}. The main loop then starts at {% katex %}i = 2{% endkatex %} with both points already in the active set.
 
