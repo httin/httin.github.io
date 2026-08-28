@@ -57,7 +57,11 @@
   {% endif %}
 
 </head>
-<body>
+{% assign show_manuscript = true %}
+{% if page.layout == 'post' or page.url == '/blogs/' %}
+  {% assign show_manuscript = false %}
+{% endif %}
+<body{% if show_manuscript %} class="has-manuscript"{% endif %}>
 
   <div id="page" class="site">
     <div class="inner">

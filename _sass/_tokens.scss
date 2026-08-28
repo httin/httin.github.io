@@ -4,6 +4,8 @@
   color-scheme: light;
 
   --bg:          #fffdf9;
+  --bg-image:    url("../../images/math-manuscript-background-light.webp");
+  --bg-wash:     color-mix(in srgb, var(--bg) 70%, transparent);
   --surface:     #fbf5ea;
   --text:        #514840;
   --text-strong: #231a14;
@@ -13,7 +15,46 @@
   --rule:        #efe3cd;
 }
 
+html {
+  background-color: var(--bg);
+  min-height: 100%;
+}
+
 body {
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
+  isolation: isolate;
+  min-height: 100%;
+}
+
+/* Fixed wallpaper on hub pages. Posts and /blogs/ stay plain so the
+   reading column is not competing with the drawing. */
+.has-manuscript::before {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--bg) 38%, transparent),
+      var(--bg-wash) 16%,
+      var(--bg-wash) 84%,
+      color-mix(in srgb, var(--bg) 38%, transparent)
+    ),
+    var(--bg-image);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 900px) {
+  .has-manuscript::before {
+    --bg-wash: color-mix(in srgb, var(--bg) 82%, transparent);
+    background-image:
+      linear-gradient(var(--bg-wash), var(--bg-wash)),
+      var(--bg-image);
+  }
 }
