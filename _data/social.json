@@ -1,20 +1,29 @@
 {
   "links": [
     {
+      "title": "rss",
+      "url": "/feed.xml",
+      "icon": "rss"
+    },
+    {
       "title": "GitHub",
-      "url": "https://github.com/httin"
+      "url": "https://github.com/httin",
+      "icon": "github"
     },
     {
       "title": "LinkedIn",
-      "url": "https://www.linkedin.com/in/huynhtrungtin/"
+      "url": "https://www.linkedin.com/in/huynhtrungtin/",
+      "icon": "linkedin"
     },
     {
       "title": "Codeforces",
-      "url": "https://codeforces.com/profile/tinht19"
+      "url": "https://codeforces.com/profile/tinht19",
+      "icon": "codeforces"
     },
     {
       "title": "LeetCode",
-      "url": "https://www.leetcode.com/httin"
+      "url": "https://www.leetcode.com/httin",
+      "icon": "leetcode"
     }
   ]
 }

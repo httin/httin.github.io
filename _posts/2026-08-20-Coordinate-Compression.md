@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Coordinate Compression"
-description: "Large coordinates, few distinct values. Keep the order. Store the gaps."
+description: "Search a huge grid when the coordinates are large and the walls are few."
 date: 2026-08-20
 thumbnail: /images/posts/coordinate-compression/coordinate-compression-poster.png
 katex: 1

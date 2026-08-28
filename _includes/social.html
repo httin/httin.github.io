@@ -1,5 +1,5 @@
 <ul class="social-links">
   {%- for link in site.data.social.links %}
-  <li><a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title | downcase }}</a></li>
+  <li><a href="{{ link.url }}" target="_blank" rel="noopener">{% include icons/{{ link.icon }}.svg %}<span>{{ link.title | downcase }}</span></a></li>
   {%- endfor %}
 </ul>

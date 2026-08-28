@@ -71,11 +71,11 @@ vector<int> dfs(int start, const vector<vector<int>>& g) {
 
 Easy mistakes:
 
-**No iterators.** You cannot walk a `std::stack`. If you need the values later, store them yourself. Or skip the adapter and use a `vector` as the stack, then read `back()`.
+**No iterators.** You cannot browse a `std::stack`. If you need the values later, store them yourself. Or init the stack with a `vector` container, then read `back()`.
 
 **In a contest, a `vector` is usually the better stack.** `std::stack` is an adapter where the default inner container is `deque`. What you want most of the time is `vector` plus `push_back` / `pop_back`: one contiguous buffer, nicer cache behaviour, and you can print the contents when something looks off.
 
-**A long path can overflow recursion.** Each recursive call adds a frame to the call stack (return address, arguments, locals). Stack memory is small and fixed so {% katex %}10^5{% endkatex %} nested calls usually do not fit. `std::stack` grows on the heap memory, so it's fine.
+**A long recursion can overflow.** Each recursive call adds a frame to the call stack (return address, arguments, locals). Stack memory is small and fixed so {% katex %}10^5{% endkatex %} nested calls usually do not fit. `std::stack` grows on the heap memory, so it's fine.
 
 ### Methods and complexity
 
@@ -136,9 +136,7 @@ On an unweighted graph that is also a shortest path. The first time you dequeue 
 
 Easy mistakes:
 
-**Mark on enqueue, not on dequeue.** If you wait until `pop`, the same node can sit in the queue once per incoming edge. Skipping repeats at `pop` still gives the right visit order, but on a dense graph the queue can grow to {% katex %}O(n^2){% endkatex %}.
-
-**A `vector` is not a legal inner container.** `queue` needs `pop_front`. The default container is `deque`. `list` also works: `push_back` and `pop_front` are both {% katex %}O(1){% endkatex %}. However, I almost never use it for BFS because each enqueue is a new heap node, so you pay a `malloc` per node, while `deque` allocates a chunk and then fills it.
+**Mark seen on enqueue, not on dequeue.** If you wait until `pop`, the same node can sit in the queue once per incoming edge. This may cost {% katex %}O(n^2){% endkatex %} you on a dense graph.
 
 ### Methods and complexity
 
@@ -252,7 +250,7 @@ Easy mistakes:
 
 I am looking at GNU libstdc++ here ([`<bits/stl_deque.h>`](https://github.com/gcc-mirror/gcc/blob/releases/gcc-14.2.0/libstdc++-v3/include/bits/stl_deque.h#L507)).
 
-A `deque<T>` is not one array. It is an array of pointers, `_M_map`, and each pointer owns a fixed block of `T`. The file even warns that "map" has nothing to do with `std::map`. Think of a table of contents: the map says which blocks exist, the blocks hold the values.
+A `deque<T>` is an array of pointers, `_M_map`, and each pointer owns a fixed block of `T`. The file even warns that "map" has nothing to do with `std::map`. Think of a table of contents: the map says which blocks exist, the blocks hold the values.
 
 ```cpp
 struct _Deque_impl_data {

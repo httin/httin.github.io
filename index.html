@@ -30,11 +30,4 @@ layout: default
     {%- endfor %}
   </ul>
 
-  <h2 class="hub-label">Elsewhere</h2>
-  <p class="hub-elsewhere">
-    {%- for link in site.data.social.links %}
-    <a href="{{ link.url }}">{{ link.title | downcase }}</a>{% unless forloop.last %} <span>/</span> {% endunless %}
-    {%- endfor %}
-  </p>
-
 </main>
