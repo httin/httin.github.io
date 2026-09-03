@@ -23,8 +23,8 @@ url: "https://httin.github.io"
 # Favicon
 favicon: images/favicon.png
 
-# Google Analytics id, e.g. "UA-NNNNNNNN-N"
-google_analytics: ""
+# Google Analytics 4 Measurement ID, e.g. "G-XXXXXXXXXX"
+google_analytics: "G-TEZD95TF9D"
 
 # Site navigation - each item must have a title and a url.
 navigation:

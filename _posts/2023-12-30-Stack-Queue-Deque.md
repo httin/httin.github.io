@@ -279,7 +279,7 @@ The map is a normal contiguous array of pointers, one pointer per block. It also
 
 That is why `int& x = dq[3];` still works after a `push_front`. `x` points at the int, and it did not move. An iterator is different: it also remembers "which entry in the map am I on?" After the list is replaced, that entry is gone, so the iterator is dead.
 
-`operator[]` is still {% katex %}O(1){% endkatex %}. Index 200 with 128 ints per block is block 1, slot 72. A long walk is still slower than `vector`, because every 128 steps you leave a block and pick up the next pointer in the map. `operator++` does that jump:
+`operator[]` is still {% katex %}O(1){% endkatex %}. Index 200 with 128 ints per block is block 1, slot 72. Every 128 steps you leave a block and pick up the next pointer in the map, and `operator++` does that jump:
 
 ```cpp
 _Self& operator++() {
