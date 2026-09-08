@@ -1,0 +1,13 @@
+# Formal statements. One box style lives in _sass/_statements.scss.
+# In a post, start a paragraph with **Kind.** or **Kind 3.**
+# To frame a new kind, add its label here. Do not add new CSS.
+# For a one-off box that is not in this list, put {: .statement} on the paragraph.
+kinds:
+  - Theorem
+  - Lemma
+  - Corollary
+  - Claim
+
+# Only these kinds appear in the post sidebar. The rest stay framed in the body.
+toc:
+  - Theorem

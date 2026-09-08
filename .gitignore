@@ -18,7 +18,7 @@ _site
 
 # Local tooling and working notes.
 .claude/
-.superpowers/
-docs/superpowers/
+.cursor/
 .venv/
-script/__pycache__/
+script/
+AGENTS.md

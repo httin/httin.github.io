@@ -1,0 +1,34 @@
+/* One frame for every formal statement. Kinds are listed in
+   _data/statements.yml; do not add per-kind rules here. A paragraph
+   may also opt in with kramdown {: .statement}. */
+
+.statement,
+p.statement {
+  background: color-mix(in srgb, var(--accent-soft) 42%, var(--bg));
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  color: var(--text-strong);
+  margin: 0 0 1.5em;
+  padding: 0.85rem 1.1rem 0.95rem;
+  scroll-margin-top: 1.25rem;
+}
+
+.statement p {
+  margin-bottom: 0.65em;
+}
+
+.statement p:last-child {
+  margin-bottom: 0;
+}
+
+.statement > p:first-child > strong:first-child,
+p.statement > strong:first-child {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.statement .katex-display {
+  margin: 0.55em 0;
+}

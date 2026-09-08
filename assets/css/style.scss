@@ -20,6 +20,7 @@
   8. Animations
   9. Code highlighting
   10. Post table of contents
+  11. Formal statements
 */
 
 // Imports
@@ -32,6 +33,7 @@
 @use "site-header";
 @use "content";
 @use "post-toc";
+@use "statements";
 @use "posts-navigation";
 @use "site-footer";
 @use "animations";

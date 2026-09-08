@@ -1,2 +1,4 @@
 - name: "Data Structures and Algorithms"
   blurb: "Notes on the data structures and algorithms I find interesting, and why they work."
+- name: "Math"
+  blurb: "I write about elementary math and how it applies to programming."
