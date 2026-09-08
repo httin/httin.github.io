@@ -82,7 +82,7 @@ This implementation is equivalent to C++17 `std::gcd`, with {% katex %}(a,0) = |
 
 The claim at each line gives {% katex %}(483,210) = (210,63) = (63,21) = (21,0) = 21{% endkatex %}.
 
-{% include image_full.html imageurl="/images/posts/divisibility/euclidean-algorithm.gif" title="Euclidean algorithm" caption="A 483 by 210 rectangle. Blue squares have side 210. Gold squares have side 63. Green squares have side 21. The last square is (483, 210) = 21." %}
+{% include image_full.html imageurl="/images/posts/divisibility/euclidean-algorithm.gif" title="Euclidean algorithm" caption="illustrate euclidean algorithm using geometry" %}
 
 Each remainder is a natural number strictly smaller than the previous {% katex %}b{% endkatex %}, so the process stops after finite steps. The value returned is {% katex %}(a,b){% endkatex %} by the claim at every step.
 
