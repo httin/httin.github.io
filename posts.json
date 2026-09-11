@@ -1,0 +1,33 @@
+---
+layout: null
+permalink: /posts.json
+---
+{%- comment -%}
+  Index of every post, newest first, for the home page scroll feed. The tag
+  URLs are built here so the client never has to repeat cgi_escape or know
+  where the tags page lives.
+{%- endcomment -%}
+[
+{%- for p in site.posts -%}
+  {%- if p.thumbnail and p.thumbnail != "" -%}
+    {%- assign thumb = p.thumbnail | relative_url -%}
+  {%- else -%}
+    {%- assign thumb = "" -%}
+  {%- endif -%}
+  {
+    "title": {{ p.title | jsonify }},
+    "url": {{ p.url | relative_url | jsonify }},
+    "thumbnail": {{ thumb | jsonify }},
+    "description": {{ p.description | default: "" | jsonify }},
+    "date_attr": {{ p.date | date: "%Y-%m-%d" | jsonify }},
+    "date_label": {{ p.date | date: "%Y-%m" | jsonify }},
+    "tags": [
+      {%- for tag in p.tags -%}
+        {%- assign tag_anchor = tag | cgi_escape -%}
+        {%- capture tag_url -%}{{ '/tags/' | relative_url }}#{{ tag_anchor }}{%- endcapture -%}
+        {"name": {{ tag | jsonify }}, "url": {{ tag_url | jsonify }}}{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }{%- unless forloop.last -%},{%- endunless -%}
+{%- endfor -%}
+]

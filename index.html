@@ -5,19 +5,17 @@ layout: default
 <main class="main-content prose">
 
   <div class="hub-intro">
-    <p>Backend and infrastructure engineer in Ho Chi Minh City. I work on Kubernetes, Go and distributed systems.</p>
-    <p>I also like the math hiding underneath all of it, and I write about the data structures and algorithms I run into.</p>
+    <p>I'm passionate about mathematics and programming. Mathematics keeps me learning and sharpens the way I think; programming turns that thinking into something tangible and testable. I write about things I find interesting along the way.</p>
   </div>
 
   <h2 class="hub-label">Writing</h2>
-  {%- assign recent = site.posts | slice: 0, 5 -%}
-  {%- assign empty_blurb = "" -%}
-  {%- for cat in site.data.categories -%}
-    {%- assign group = recent | where_exp: "p", "p.categories contains cat.name" -%}
-    {%- if group.size > 0 -%}
-      {% include category-group.html name=cat.name blurb=empty_blurb posts=group %}
-    {%- endif -%}
-  {%- endfor -%}
+  <ul class="entry-list js-post-feed">
+    {%- assign recent = site.posts | slice: 0, 5 -%}
+    {%- for p in recent %}
+    {% include post-entry.html post=p %}
+    {%- endfor %}
+  </ul>
+  <div class="js-post-feed-marker" data-src="{{ '/posts.json' | relative_url }}" aria-hidden="true"></div>
   <p class="hub-more"><a href="{{ '/blogs/' | relative_url }}">All writing &rarr;</a></p>
 
   <h2 class="hub-label">Projects</h2>

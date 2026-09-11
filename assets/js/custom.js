@@ -88,3 +88,101 @@ if (tocRoot && postContent) {
     headings.forEach(function (heading) { observer.observe(heading); });
   }
 }
+
+// Home page writing feed: render the next posts as the reader scrolls down.
+let feed = document.querySelector('.js-post-feed');
+let feedMarker = document.querySelector('.js-post-feed-marker');
+if (feed && feedMarker) {
+  let batchSize = 5;
+  let band = 200;
+  let nextIndex = feed.querySelectorAll('.entry').length;
+  let filling = false;
+
+  // Mirrors _includes/post-entry.html. Keep the two in step.
+  let buildEntry = function (post) {
+    let item = document.createElement('li');
+    item.className = 'entry';
+
+    if (post.thumbnail) {
+      let thumb = document.createElement('img');
+      thumb.className = 'entry-thumb';
+      thumb.src = post.thumbnail;
+      thumb.alt = post.title;
+      thumb.loading = 'lazy';
+      item.appendChild(thumb);
+    }
+
+    let body = document.createElement('div');
+    body.className = 'entry-body';
+
+    let title = document.createElement('a');
+    title.className = 'entry-title';
+    title.href = post.url;
+    title.textContent = post.title;
+    body.appendChild(title);
+
+    if (post.description) {
+      let desc = document.createElement('p');
+      desc.className = 'entry-desc';
+      desc.textContent = post.description;
+      body.appendChild(desc);
+    }
+
+    let meta = document.createElement('p');
+    meta.className = 'entry-meta';
+    let stamp = document.createElement('time');
+    stamp.setAttribute('datetime', post.date_attr);
+    stamp.textContent = post.date_label;
+    meta.appendChild(stamp);
+
+    post.tags.forEach(function (tag, i) {
+      meta.appendChild(document.createTextNode(i === 0 ? ' \u00b7 ' : ', '));
+      let link = document.createElement('a');
+      link.href = tag.url;
+      link.textContent = tag.name;
+      meta.appendChild(link);
+    });
+
+    body.appendChild(meta);
+    item.appendChild(body);
+    return item;
+  };
+
+  // Read the index at load, so revealing a batch never waits on the network.
+  // A failed request gives an empty index, which stops the feed and leaves the
+  // "All writing" link as the way to the rest of the posts.
+  let indexRequest = fetch(feedMarker.dataset.src)
+    .then(function (response) { return response.ok ? response.json() : []; })
+    .catch(function () { return []; });
+
+  let markerInReach = function () {
+    return feedMarker.getBoundingClientRect().top <= window.innerHeight + band;
+  };
+
+  // Add batches while the marker stays in reach. The loop matters because
+  // IntersectionObserver reports only changes in state: once the marker sits
+  // on a page the reader cannot scroll past, it never leaves the band and no
+  // further callback arrives.
+  let fill = function () {
+    if (filling) return;
+    filling = true;
+    indexRequest.then(function (posts) {
+      while (nextIndex < posts.length && markerInReach()) {
+        let batch = posts.slice(nextIndex, nextIndex + batchSize);
+        batch.forEach(function (post) { feed.appendChild(buildEntry(post)); });
+        nextIndex += batch.length;
+      }
+      filling = false;
+      if (nextIndex >= posts.length) {
+        observer.disconnect();
+        feedMarker.remove();
+      }
+    });
+  };
+
+  let observer = new IntersectionObserver(function (entries) {
+    if (entries.some(function (entry) { return entry.isIntersecting; })) fill();
+  }, { rootMargin: band + 'px' });
+
+  observer.observe(feedMarker);
+}

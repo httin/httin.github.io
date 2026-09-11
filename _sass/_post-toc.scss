@@ -21,7 +21,10 @@
 @media (min-width: 1200px) {
   .post-main { max-width: var(--page); }
 
-  .post {
+  /* Only the post layout supplies .post-body and .post-toc to place in these
+     columns. The page layout shares the .post class but has neither, so its
+     content would land in the 1fr gutter instead of the measure. */
+  .post-main .post {
     column-gap: 2rem;
     display: grid;
     grid-template-columns: 1fr var(--measure) 220px;

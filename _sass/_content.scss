@@ -162,6 +162,10 @@
   p { margin-bottom: 0.9rem; }
 }
 
+.page-about p {
+  font-size: var(--step-0);
+}
+
 .hub-label {
   border-bottom: 1px solid var(--rule);
   color: var(--text-muted);
@@ -180,10 +184,5 @@
   margin-top: -0.4rem;
 }
 
-/* On the homepage the category name is a small label, not a section head. */
-.hub-label + .cat-group .cat-head {
-  border-bottom: 0;
-  font-size: var(--step-0);
-  margin-bottom: 0.35rem;
-  padding-bottom: 0;
-}
+/* A sentinel the observer can measure, rather than an empty box. */
+.js-post-feed-marker { height: 1px; }
