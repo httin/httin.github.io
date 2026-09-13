@@ -2,7 +2,7 @@
 layout: post
 title: "Divisibility and Euclidean Algorithm"
 description: "Common multiples, common divisors and the remainder loop."
-date: 2026-09-06
+date: 2025-12-26
 thumbnail: /images/posts/divisibility/poster.jpg
 katex: 1
 categories: ["Math"]
@@ -176,3 +176,8 @@ Hence {% katex %}M = m'{% endkatex %}. {% katex %}\blacksquare{% endkatex %}
 
 - [Greatest Common Divisor of Strings](https://leetcode.com/problems/greatest-common-divisor-of-strings/).
 - [Common Divisors](https://cses.fi/problemset/task/1081).
+- [X of a Kind in a Deck of Cards](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/): you can split the deck into groups of size {% katex %}x > 1{% endkatex %} exactly when {% katex %}x{% endkatex %} divides every frequency. That is {% katex %}(c_1,c_2,\ldots) > 1{% endkatex %}. Theorem 5 says you get that gcd by pairing: start with {% katex %}c_1{% endkatex %}, then replace the running value by {% katex %}(d, c_i){% endkatex %} at each next frequency.
+- [Water and Jug Problem](https://leetcode.com/problems/water-and-jug-problem/): jugs of size {% katex %}x{% endkatex %} and {% katex %}y{% endkatex %} can measure {% katex %}z{% endkatex %} if and only if {% katex %}(x,y){% endkatex %} divides {% katex %}z{% endkatex %} and {% katex %}z \le x+y{% endkatex %}. The claim is why every reachable amount is a multiple of the gcd.
+- [Fadi and LCM](https://codeforces.com/problemset/problem/1285/C): given {% katex %}X{% endkatex %}, find {% katex %}a{% endkatex %} and {% katex %}b{% endkatex %} with {% katex %}[a,b] = X{% endkatex %} and {% katex %}\max(a,b){% endkatex %} as small as possible. Theorem 4 says {% katex %}ab = (a,b)\, X{% endkatex %}. The best pairs are coprime factorizations of {% katex %}X{% endkatex %}.
+- [Smallest multiple](https://projecteuler.net/problem=5): {% katex %}[1,2,\ldots,20]{% endkatex %}. Apply Theorem 5 again, and use {% katex %}[a,b] = a/(a,b) \cdot b{% endkatex %} so each step stays a multiple of every integer seen so far.
+- Fibonacci sequence: prove {% katex %}(F_{n+1}, F_n) = 1{% endkatex %} from the claim.
