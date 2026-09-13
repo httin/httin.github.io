@@ -9,7 +9,7 @@ categories: ["Data Structures and Algorithms"]
 tags: [algorithms, datastructures, graph]
 ---
 
-This post covers `std::stack`, `std::queue`, and `std::deque`. A stack only uses one end. A queue pushes on the back and pops from the front. A deque can do either. I use them for DFS, BFS, and a sliding window.
+This post covers `std::stack`, `std::queue`, and `std::deque`. I will walk you through each data structure, how it applies, and its methods with Big-O complexity. In summary, a stack only uses one end, a queue pushes on the back and pops from the front, and a deque can do either.
 
 <!--more-->
 
@@ -207,7 +207,7 @@ Easy mistakes:
 
 **Decreasing for a maximum, increasing for a minimum.** Flip the comparison and you get the other one. Do not store raw values if two equal values can sit in the window. You would not know which index to expire.
 
-**`<=` versus `<`.** With `<=` you drop an older equal value and keep the newer index. That is what you want. The older one leaves the window first anyway.
+**`<=` versus `<`.** With `<=` you drop an older equal value and keep the newer index. The older one leaves the window first anyway.
 
 **Do not keep pointers or iterators into a `deque` across an insert.** `push_front` or `push_back` may allocate a new block and invalidate iterators. References to existing elements stay valid on an end insert. Insert or erase in the middle invalidates everything. If you need a stable address, use a `list`, or a `vector` of values you never move.
 
